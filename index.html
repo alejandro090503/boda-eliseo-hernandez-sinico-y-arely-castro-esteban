@@ -816,6 +816,26 @@ body{font-size:17px}
 @keyframes sparkPulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media(prefers-reduced-motion:reduce){.rosa{animation:none!important}}
 
+
+/* menú minimalista */
+.navpill{width:auto!important;margin-left:0!important;left:50%;gap:14px;padding:5px 5px 5px 18px;background:rgba(255,255,255,.6);border-color:rgba(168,132,62,.28);box-shadow:0 10px 30px -14px rgba(42,36,24,.28);transform:translate(-50%,40px)}
+.navpill.show{transform:translate(-50%,0)}
+.nav-mono{font-size:16px;letter-spacing:.12em;padding-right:0}
+.nav-open{min-height:40px;padding:0 16px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;background:transparent;color:var(--olive);border:1px solid rgba(79,91,42,.35)}
+
+/* bolita que cambia de color */
+.sw-morph{width:clamp(72px,20vw,92px)!important;height:clamp(72px,20vw,92px)!important;background:#38571a;animation:swMorph 8s ease-in-out infinite,swGlow 3.2s ease-in-out infinite!important}
+@keyframes swMorph{0%,38%{background-color:#38571a}50%,88%{background-color:#01c7fc}100%{background-color:#38571a}}
+.sw-names{position:relative;height:1.6em;min-width:12em}
+.sw-names span{position:absolute;left:0;right:0;animation:swName 8s ease-in-out infinite}
+.sw-names span+span{animation-name:swName2}
+@keyframes swName{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}
+@keyframes swName2{0%,38%{opacity:0}50%,88%{opacity:1}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.sw-morph,.sw-names span{animation:none!important}.sw-names span+span{display:none}}
+
+/* música abajo a la derecha, alineada con el menú */
+.vinyl-btn{top:auto!important;bottom:max(1rem,env(safe-area-inset-bottom))!important;right:16px!important;width:52px!important;height:52px!important}
+@media(min-width:1024px){.vinyl-btn{bottom:20px!important;width:64px!important;height:64px!important}}
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.hero-scroll::after{animation:none}}
 </style>
@@ -847,9 +867,7 @@ body{font-size:17px}
 <nav class="navpill" id="navpill" aria-label="Secciones">
   <span class="nav-mono">E &amp; A</span>
   <div class="nav-links" id="nav-links"><span class="nav-ind" id="nav-ind"></span></div>
-  <span class="nav-sep"></span>
-  <button class="nav-share" id="nav-share" type="button" aria-label="Compartir invitación"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
-  <button class="nav-open" id="nav-open" type="button" aria-expanded="false" aria-controls="navmenu">&#9776; Menú</button>
+  <button class="nav-open" id="nav-open" type="button" aria-expanded="false" aria-controls="navmenu">Menú</button>
 </nav>
 <div class="navmenu" id="navmenu" aria-hidden="true">
   <div class="nm-top"><span class="nav-mono">E &amp; A</span><button class="nm-close" id="nm-close" type="button" aria-label="Cerrar menú">&#x2715;</button></div>
@@ -1090,9 +1108,8 @@ body{font-size:17px}
 
       <div class="rv" style="margin-bottom:36px">
         <div class="swatch-group-title">Colores sugeridos</div>
-        <div class="dress-swatches swap-row">
-          <div class="swatch"><div class="swatch-c glow" style="background:#38571a"></div><div class="swatch-n">Verde olivo</div></div>
-          <div class="swatch"><div class="swatch-c glow" style="background:#01c7fc"></div><div class="swatch-n">Turquesa</div></div>
+        <div class="dress-swatches">
+          <div class="swatch"><div class="swatch-c glow sw-morph"></div><div class="swatch-n sw-names"><span>Verde olivo</span><span>Turquesa</span></div></div>
         </div>
       </div>
 
@@ -1464,25 +1481,7 @@ document.querySelectorAll('.itin-item').forEach(function(item,idx){
 
 // ── SWATCHES ──
 gsap.fromTo('.swatch',{opacity:0,scale:.4,y:28},{opacity:1,scale:1,y:0,duration:1,stagger:.09,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.dress-swatches',start:'top 86%'}});
-// Círculos que intercambian lugar en bucle
-(function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.swap-row').forEach(function(row){
-    var sw=row.querySelectorAll('.swatch'); if(sw.length<2) return;
-    var a=sw[0],b=sw[1],tl=null;
-    function build(){
-      if(tl) tl.kill(); gsap.set([a,b],{x:0});
-      var dx=b.getBoundingClientRect().left-a.getBoundingClientRect().left;
-      tl=gsap.timeline({repeat:-1,repeatDelay:1.6,delay:2})
-        .to(a,{x:dx,y:-14,duration:1.4,ease:'sine.inOut'},0).to(b,{x:-dx,y:14,duration:1.4,ease:'sine.inOut'},0)
-        .to([a,b],{y:0,duration:.5,ease:'sine.out'},1.0)
-        .to(a,{x:0,y:14,duration:1.4,ease:'sine.inOut'},3.5).to(b,{x:0,y:-14,duration:1.4,ease:'sine.inOut'},3.5)
-        .to([a,b],{y:0,duration:.5,ease:'sine.out'},4.5);
-    }
-    ScrollTrigger.create({trigger:row,start:'top 90%',once:true,onEnter:function(){setTimeout(build,1200)}});
-    addEventListener('resize',function(){ if(tl) build(); });
-  });
-})();
+
 
 // ── 3D WHEEL ──
 (function initWheel(){
@@ -1867,10 +1866,6 @@ gsap.fromTo('.footer-date',{opacity:0,letterSpacing:'1em'},{opacity:1,letterSpac
   function closeMenu(){if(!menu.classList.contains('open')) return;menu.classList.add('closing');menu.classList.remove('open');menu.setAttribute('aria-hidden','true');openB.setAttribute('aria-expanded','false');setTimeout(function(){menu.classList.remove('closing')},650);}
   openB.addEventListener('click',openMenu);closeB.addEventListener('click',closeMenu);
   document.addEventListener('keydown',function(e){if(e.key==='Escape') closeMenu();});
-  document.getElementById('nav-share').addEventListener('click',function(){
-    var data={title:'Eliseo & Arely',text:'Nuestra boda · 26 de noviembre de 2026',url:location.origin+location.pathname};
-    if(navigator.share){navigator.share(data).catch(function(){});}else if(navigator.clipboard){navigator.clipboard.writeText(data.url);}
-  });
   function setActive(id){
     document.querySelectorAll('.nav-link').forEach(function(a){var on=a.dataset.id===id;a.classList.toggle('on',on);if(on){ind.style.width=a.offsetWidth+'px';ind.style.transform='translateX('+a.offsetLeft+'px)';}});
     document.querySelectorAll('.nm-list a').forEach(function(a){a.classList.toggle('on',a.dataset.id===id)});
