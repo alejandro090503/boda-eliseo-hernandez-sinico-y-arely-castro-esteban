@@ -10,10 +10,13 @@
 <meta property="og:url" content="https://boda-eliseo-y-arely.vercel.app/">
 <meta property="og:title" content="Eliseo &amp; Arely · 26 de noviembre de 2026">
 <meta property="og:description" content="Nos casamos y queremos que estés ahí. Winston-Salem, NC — 26 de noviembre de 2026">
-<meta property="og:image" content="https://boda-eliseo-y-arely.vercel.app/og.jpg?v=1">
+<meta property="og:image" content="https://boda-eliseo-y-arely.vercel.app/og.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_MX">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://boda-eliseo-y-arely.vercel.app/og.jpg?v=1">
+<meta name="twitter:image" content="https://boda-eliseo-y-arely.vercel.app/og.jpg?v=2">
 
 <link rel="preload" as="image" href="hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -821,9 +824,9 @@ body{font-size:17px}
 
 <!-- ENVELOPE SCREEN -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
-  <img id="env-image" src="sobre.webp" alt="">
+  <img id="env-image" src="sobre.webp?v=2" alt="">
   <video id="env-video" muted playsinline preload="auto">
-    <source src="apertura.mp4" type="video/mp4">
+    <source src="apertura.mp4?v=2" type="video/mp4">
   </video>
   <div id="env-hint">Toca para abrir</div>
 </div>
@@ -1359,7 +1362,7 @@ function launchInvitation(){
   const wrap=document.querySelector('.wrap');
   if(!envScreen||!envImage) return;
 
-  const VIDEO_CUT=3;
+  const VIDEO_CUT=5.6;
   let opened=false,flashed=false;
 
   gsap.fromTo(envImage,{opacity:0},{opacity:1,duration:1.2,ease:'power2.out',delay:.3});
