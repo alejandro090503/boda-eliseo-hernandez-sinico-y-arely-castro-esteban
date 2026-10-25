@@ -545,8 +545,8 @@ body{font-size:17px}
 .loc-card::before,.familia-card::before,.rsvp-card::before{border-color:color-mix(in srgb,var(--gold) 45%,transparent);opacity:1}
 
 /* hero: blanco luminoso sobre la foto */
-.hero-bg{transform:none;filter:saturate(.95) contrast(1.02) brightness(.82)}
-.hero-bg-wrap{animation:kenburns 22s ease-in-out infinite alternate}
+
+
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.06) translateY(-1%)}}
 .hero-frame{border:1.5px solid rgba(227,194,122,.75)}
 .hero-and{background:linear-gradient(135deg,#EAF3FF 0%,#A9C7EC 40%,#6F9BD1 75%,#D7E6F8 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35));}
@@ -596,7 +596,7 @@ body{font-size:17px}
 .itin-item{min-height:110px}
 
 /* Galería: revelado con máscara */
-.wheel-card{clip-path:inset(0 0 0 0 round 14px)}
+
 
 /* LOVE YOU — anillos (efecto pedido) */
 .love-sec{background:var(--bg);text-align:center;padding:min(12vh,96px) 24px;position:relative;overflow:hidden}
@@ -689,6 +689,99 @@ body{font-size:17px}
 
 @media(prefers-reduced-motion:reduce){.rosa,.loc-float,.dress-fig,.hero-bg-wrap,.rsvp-btn,.loc-btn .pin{animation:none!important}.navmenu{transition:none}}
 
+
+/* ════════ PAQUETE DE EFECTOS v2 ════════ */
+/* 1 · Hero */
+.hero{align-items:flex-end}
+.hero-content{padding:40px 24px 110px}
+.hero-ornament-top{display:none}
+.hero-bg{position:absolute;inset:-4% 0 0;z-index:-3;overflow:hidden}
+.hero-drift{position:absolute;inset:0;background:url('hero.jpg') center 18%/cover no-repeat;animation:heroDrift 26s ease-in-out infinite alternate}
+@keyframes heroDrift{0%{transform:translate3d(0,0,0) scale(1.02)}50%{transform:translate3d(-1.2%,1%,0) scale(1.06)}100%{transform:translate3d(1.5%,-2%,0) scale(1.1)}}
+.hero-shine{position:absolute;inset:0;mix-blend-mode:soft-light;background:linear-gradient(115deg,transparent 30%,rgba(255,248,225,.55) 45%,rgba(255,255,255,.75) 50%,rgba(255,248,225,.55) 55%,transparent 70%);background-size:300% 100%;animation:heroShine 9s ease-in-out infinite}
+@keyframes heroShine{0%{background-position:120% 0}100%{background-position:-120% 0}}
+.hero-bg-overlay{background:linear-gradient(180deg,rgba(30,34,20,.30) 0%,rgba(30,34,20,.12) 30%,rgba(30,34,20,.38) 55%,rgba(20,24,12,.88) 100%)!important}
+.hero-scroll{bottom:26px}
+.hero-date{margin-top:26px}
+
+/* 2 · Fundido entre secciones */
+.wrap>section,.wrap>footer{isolation:isolate;position:relative}
+.sfade{position:absolute;left:0;right:0;height:170px;z-index:-1;pointer-events:none}
+.sfade--top{top:0}.sfade--bot{bottom:0}
+
+/* 3 · Tintas */
+.ink-bg{position:absolute;inset:0;z-index:-2;overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 150px,#000 calc(100% - 150px),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 150px,#000 calc(100% - 150px),transparent 100%)}
+.ink-bg i{position:absolute;inset:-6%;background-size:cover;background-position:center;animation:inkDrift 28s ease-in-out infinite alternate}
+.ink-bg.flip i{transform:scaleX(-1);animation-name:inkDriftFlip}
+@keyframes inkDrift{0%{transform:translate3d(-2.5%,0,0) scale(1) rotate(-.6deg)}100%{transform:translate3d(2.5%,-2%,0) scale(1.1) rotate(.6deg)}}
+@keyframes inkDriftFlip{0%{transform:scaleX(-1) translate3d(-2.5%,0,0) scale(1) rotate(-.6deg)}100%{transform:scaleX(-1) translate3d(2.5%,-2%,0) scale(1.1) rotate(.6deg)}}
+.sec .sec-inner h2,.sec .sec-inner .eyebrow,.sec .sec-inner p,.sec .sec-inner .italiana,.dress-sub,.swatch-n,.swatch-group-title,.verse-text,.verse-ref{text-shadow:0 0 14px rgba(255,255,255,.95),0 0 4px rgba(255,255,255,.9)}
+.sec-dark .sec-inner p,.sec-dark .sec-inner h2,.sec-dark .eyebrow{text-shadow:none}
+
+/* 4 · Levitar */
+@keyframes levitate{0%,100%{transform:translateY(0) rotate(0deg)}35%{transform:translateY(-9px) rotate(.6deg)}70%{transform:translateY(-4px) rotate(-.6deg)}}
+.loc-float,.familia-card,.damas-card,.hotel-card,.dc-fig{animation:levitate 6.5s ease-in-out infinite}
+.loc-float:nth-child(2),.damas-card,.dc-fig:nth-child(2){animation-delay:-2.2s}
+.hotel-card{animation-delay:-4.1s}
+
+/* 5 · Vestimenta */
+.dc-figs{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:340px;margin:8px auto 30px;align-items:end}
+.dc-fig{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;transform-origin:50% 100%}
+.dc-fig img{height:clamp(190px,56vw,240px);width:auto;display:block;filter:drop-shadow(0 8px 14px rgba(42,36,24,.22))}
+.dc-fig figcaption{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-soft);padding-left:.3em}
+.swatch-c.glow{overflow:hidden;animation:swGlow 3.2s ease-in-out infinite}
+.swatch-c.glow::before{content:"";position:absolute;inset:-20%;background:linear-gradient(120deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-120%);animation:swSheen 4.5s ease-in-out infinite}
+@keyframes swGlow{0%,100%{box-shadow:inset 0 -6px 16px rgba(0,0,0,.15),0 0 0 2px rgba(201,162,74,.35),0 0 10px rgba(227,194,122,.35)}50%{box-shadow:inset 0 -6px 16px rgba(0,0,0,.15),0 0 0 2px rgba(201,162,74,.7),0 0 26px rgba(227,194,122,.75)}}
+@keyframes swSheen{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.swatch-n{font-size:13px;letter-spacing:.2em;color:var(--ink)}
+.dress-swatches{position:relative}
+
+/* 6 · Lluvia de sobres */
+#regalos .sec-inner{position:relative}
+.env-rain{position:absolute;inset:-40px -28px;pointer-events:none;z-index:0;overflow:hidden}
+.env-rain-item{position:absolute;top:-46px;opacity:0;filter:drop-shadow(0 2px 3px rgba(42,36,24,.15))}
+.env-stage{position:relative;z-index:1}
+.env-interactive{margin:10px auto 0;opacity:0;touch-action:manipulation}
+.env-body{animation:none;width:min(258px,74vw);height:auto;aspect-ratio:260/200;filter:drop-shadow(0 10px 26px rgba(42,36,24,.18))}
+.env-body.landed{animation:envBreathe 3.6s ease-in-out infinite}
+@keyframes envBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.env-flap-wrap{top:23%;left:6.9%;width:86.2%;height:43%}
+.env-seal{position:absolute;top:52%;left:50%;width:23%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:3;transition:opacity .35s ease,transform .5s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.env-interactive.open .env-seal{opacity:0;transform:translate(-50%,-50%) scale(.7)}
+.env-interactive.open .env-open-content{max-height:320px;margin-top:18px}
+.env-title{font-family:var(--display);font-weight:600;font-size:clamp(24px,7vw,30px);color:var(--ink)}
+.env-desc{font-family:var(--sans);font-style:normal;font-size:16px;color:var(--ink-soft);max-width:300px}
+.env-tap-hint{display:inline-block;background:none;border:none;cursor:pointer;min-height:44px;padding:10px 18px;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);opacity:0;transition:opacity .5s;touch-action:manipulation}
+.env-tap-hint.show{opacity:1}
+
+/* 8 · Galería con espejo */
+.wheel-card{overflow:visible;border:none;box-shadow:none;clip-path:none;border-radius:0;background:none}
+.wc-img{position:absolute;inset:0;border-radius:14px;overflow:hidden;border:1.5px solid var(--gold);box-shadow:0 10px 30px rgba(42,36,24,.22)}
+.wc-img img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.wc-refl{position:absolute;left:0;right:0;top:calc(100% + 6px);height:46%;border-radius:14px;overflow:hidden;transform:scaleY(-1);opacity:.55;pointer-events:none}
+.wc-refl img{width:100%;height:217%;object-fit:cover;object-position:center top;display:block;transform:translateY(-54%)}
+.wc-refl img{transform:none;position:absolute;bottom:0;height:217%}
+.wc-refl i{position:absolute;inset:0;background:linear-gradient(to top,rgba(250,248,243,.35) 0%,var(--surface) 75%)}
+.wheel-scene{height:520px}
+
+/* 9 · RSVP */
+.rsvp-hi{font-family:var(--display);font-weight:600;font-size:clamp(26px,7.5vw,32px);color:var(--ink);line-height:1.25;margin:0 0 4px}
+#rsvp-pases-note{font-size:17px;font-weight:500;color:var(--ink-soft)}
+.rsvp-boxes{display:flex;gap:12px;justify-content:center;margin:6px 0 20px}
+.rsvp-pases-display{padding:12px 26px;border:1.5px solid var(--gold);border-radius:16px;background:var(--surface);margin:0}
+.rsvp-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rsvp-toggle-btn{border-radius:14px;min-height:52px}
+
+/* contador: etiquetas sin cortar */
+.cd-lbl{letter-spacing:.14em;padding-left:.14em;font-size:11px}
+/* 10 · Script / degradados sin cortes */
+.hero-and,.cd-num{padding:.22em .45em;margin-left:-.45em;margin-right:-.45em;margin-top:-.22em;margin-bottom:-.22em;line-height:1.25;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero-and{display:inline-block}
+
+@media(prefers-reduced-motion:reduce){.hero-drift,.hero-shine,.ink-bg i,.loc-float,.familia-card,.damas-card,.hotel-card,.dc-fig,.swatch-c.glow,.swatch-c.glow::before,.env-body.landed{animation:none!important}}
+
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.hero-scroll::after{animation:none}}
 </style>
@@ -742,10 +835,8 @@ body{font-size:17px}
 <div class="wrap">
 
   <!-- ════════════════ HERO ════════════════ -->
-  <section class="hero">
-    <div class="hero-bg-wrap">
-      <img class="hero-bg" src="hero.jpg" alt="Eliseo y Arely" fetchpriority="high" loading="eager">
-    </div>
+  <section class="hero" id="hero" data-bot="#1E2214">
+    <div class="hero-bg" role="img" aria-label="Eliseo y Arely"><i class="hero-drift"></i><i class="hero-shine"></i></div>
     <div class="hero-bg-overlay"></div>
     <div class="hero-frame"></div>
     <div class="hero-frame-corners"></div>
@@ -767,11 +858,10 @@ body{font-size:17px}
     <div class="hero-scroll" aria-label="Desliza para continuar">Desliza</div>
   </section>
 
-  <div class="seam" style="--from:transparent;--to:var(--bg);height:40px" aria-hidden="true"></div>
 
   <!-- ════════════════ INVITACIÓN ════════════════ -->
   <section class="sec section-bg" id="inicio" style="padding-top:52px;padding-bottom:min(12vh,96px)">
-    <div class="sec-flora" style="background-image:url('botanica2.webp');opacity:.18"></div>
+    <div class="ink-bg" aria-hidden="true"><i style="background-image:url('ink/ink-top.webp')"></i></div>
     <div class="rosa rosa--tl" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div><div class="rosa rosa--br" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
     <div class="sec-inner rv">
       <div class="verse-wrap">
@@ -793,7 +883,6 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:#2C351A" aria-hidden="true"></div>
 
   <!-- ════════════════ DATE HERO ════════════════ -->
   <section class="date-hero">
@@ -814,7 +903,6 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:#2C351A;--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- ════════════════ COUNTDOWN ════════════════ -->
   <section id="cuenta" class="sec section-surface countdown" style="padding-top:min(12vh,88px);padding-bottom:min(12vh,88px)">
@@ -832,11 +920,10 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ FAMILIAS ════════════════ -->
   <section id="familia" class="sec section-bg" style="text-align:center">
-    <div class="sec-flora" style="background-image:url('botanica1.webp');opacity:.12"></div>
+    <div class="ink-bg" aria-hidden="true"><i style="background-image:url('ink/ink-oval.webp')"></i></div>
     <div class="rosa rosa--tr" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
     <div class="sec-inner">
       <div class="eyebrow">Con la bendición de</div>
@@ -865,10 +952,10 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- ════════════════ UBICACIÓN ════════════════ -->
   <section id="lugares" class="sec section-surface" style="text-align:center">
+    <div class="ink-bg flip" aria-hidden="true"><i style="background-image:url('ink/ink-hero.webp')"></i></div>
     <div class="sec-inner">
       <div class="eyebrow">Dónde Celebramos</div>
       <h2>Los <em>Lugares</em></h2>
@@ -898,11 +985,10 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ HOSPEDAJE ════════════════ -->
   <section id="hospedaje" class="sec section-bg" style="text-align:center;overflow:hidden">
-    <div class="sec-flora" style="background-image:url('botanica1.webp');opacity:.12"></div>
+    <div class="ink-bg flip" aria-hidden="true"><i style="background-image:url('ink/ink-top.webp')"></i></div>
     <div class="sec-inner">
       <div class="eyebrow rv">Para tu Comodidad</div>
       <h2 class="rv">Hospedaje <em>Recomendado</em></h2>
@@ -916,11 +1002,10 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ ITINERARIO ════════════════ -->
   <section id="itinerario" class="sec section-bg" style="text-align:center;overflow:hidden">
-    <div class="sec-flora" style="background-image:url('botanica3.webp');opacity:.14"></div>
+    <div class="ink-bg flip" aria-hidden="true"><i style="background-image:url('ink/ink-corner.webp')"></i></div>
     <div class="rosa rosa--tl" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div><div class="rosa rosa--br" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
     <div class="sec-inner">
       <div class="eyebrow">El Programa del Día</div>
@@ -954,68 +1039,18 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- ════════════════ DRESS CODE ════════════════ -->
   <section id="vestimenta" class="sec section-surface dress" style="text-align:center">
-    <div class="sec-flora" style="background-image:url('botanica2.webp');opacity:.20"></div>
+    <div class="ink-bg" aria-hidden="true"><i style="background-image:url('ink/ink-footer.webp')"></i></div>
     <div class="sec-inner">
       <div class="eyebrow">Código de Vestimenta</div>
       <h2 class="rv">Vestimenta <em>Formal</em></h2>
       <div class="dress-sub rv">Elegancia en cada detalle</div>
 
-      <!-- Siluetas vestimenta — estilo editorial -->
-      <div class="rv" style="display:flex;justify-content:center;gap:clamp(40px,12vw,72px);margin-bottom:28px;align-items:flex-end">
-        <!-- Hombre — traje formal con solapa y corbata -->
-        <div class="dress-fig" style="text-align:center">
-          <svg viewBox="0 0 100 220" width="75" fill="var(--ink)" style="opacity:.62;display:block;margin:0 auto 10px" xmlns="http://www.w3.org/2000/svg">
-            <!-- Cabeza -->
-            <ellipse cx="50" cy="22" rx="12" ry="14"/>
-            <!-- Cuello -->
-            <rect x="44" y="35" width="12" height="10" rx="2"/>
-            <!-- Torso / saco -->
-            <path d="M30 45 L26 48 L24 80 L26 150 L40 150 L40 140 L42 80 L44 55 L50 60 L56 55 L58 80 L60 140 L60 150 L74 150 L76 80 L74 48 L70 45 L56 42 L50 50 L44 42 Z"/>
-            <!-- Solapa izquierda -->
-            <path d="M44 42 L38 52 L44 65 L50 50 Z" fill="var(--surface)" stroke="var(--ink)" stroke-width=".8"/>
-            <!-- Solapa derecha -->
-            <path d="M56 42 L62 52 L56 65 L50 50 Z" fill="var(--surface)" stroke="var(--ink)" stroke-width=".8"/>
-            <!-- Corbata -->
-            <path d="M48 50 L50 75 L52 50 Z" fill="var(--olive)" opacity=".9"/>
-            <!-- Pantalón izquierdo -->
-            <path d="M26 150 L28 210 L42 210 L40 150 Z"/>
-            <!-- Pantalón derecho -->
-            <path d="M60 150 L58 210 L72 210 L74 150 Z"/>
-            <!-- Zapatos -->
-            <ellipse cx="35" cy="213" rx="10" ry="4"/>
-            <ellipse cx="65" cy="213" rx="10" ry="4"/>
-          </svg>
-          <span style="font-family:var(--italiana);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft)">Caballeros</span>
-        </div>
-        <!-- Mujer — vestido largo de gala -->
-        <div class="dress-fig" style="text-align:center">
-          <svg viewBox="0 0 100 220" width="75" fill="var(--ink)" style="opacity:.62;display:block;margin:0 auto 10px" xmlns="http://www.w3.org/2000/svg">
-            <!-- Cabello -->
-            <ellipse cx="50" cy="18" rx="14" ry="16"/>
-            <path d="M36 14 Q34 28 38 35" fill="var(--ink)"/>
-            <path d="M64 14 Q66 28 62 35" fill="var(--ink)"/>
-            <!-- Cara (corte) -->
-            <ellipse cx="50" cy="20" rx="10" ry="12" fill="var(--surface)"/>
-            <!-- Cuello -->
-            <rect x="46" y="32" width="8" height="8" rx="2" fill="var(--ink)"/>
-            <!-- Hombros / escote -->
-            <path d="M32 44 Q38 38 46 40 L50 46 L54 40 Q62 38 68 44 L66 52 L34 52 Z"/>
-            <!-- Vestido — torso ajustado -->
-            <path d="M34 52 L32 60 L34 90 L38 95 L62 95 L66 90 L68 60 L66 52 Z"/>
-            <!-- Cintura -->
-            <rect x="36" y="88" width="28" height="5" rx="1" fill="var(--gold-deep)" opacity=".5"/>
-            <!-- Falda — amplia y fluida -->
-            <path d="M38 93 Q30 140 18 210 L82 210 Q70 140 62 93 Z"/>
-            <!-- Brillo de tela -->
-            <path d="M42 100 Q40 150 28 208" stroke="var(--surface)" stroke-width=".7" fill="none" opacity=".3"/>
-            <path d="M58 100 Q60 150 72 208" stroke="var(--surface)" stroke-width=".7" fill="none" opacity=".3"/>
-          </svg>
-          <span style="font-family:var(--italiana);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--ink-soft)">Damas</span>
-        </div>
+      <div class="dc-figs rv">
+        <figure class="dc-fig"><img src="caballero.webp" alt="Caballero con traje formal" width="300" height="610"><figcaption>Caballeros</figcaption></figure>
+        <figure class="dc-fig"><img src="dama.webp" alt="Dama con vestido largo" width="248" height="604"><figcaption>Damas</figcaption></figure>
       </div>
 
       <!-- PENDIENTE CLIENTE: código de vestimenta exacto -->
@@ -1023,22 +1058,22 @@ body{font-size:17px}
 
       <div class="rv" style="margin-bottom:36px">
         <div class="swatch-group-title">Colores sugeridos</div>
-        <div class="dress-swatches">
-          <div class="swatch"><div class="swatch-c" style="background:#38571a"></div><div class="swatch-n">Verde olivo</div></div>
-          <div class="swatch"><div class="swatch-c" style="background:#01c7fc"></div><div class="swatch-n">Turquesa</div></div>
+        <div class="dress-swatches swap-row">
+          <div class="swatch"><div class="swatch-c glow" style="background:#38571a"></div><div class="swatch-n">Verde olivo</div></div>
+          <div class="swatch"><div class="swatch-c glow" style="background:#01c7fc"></div><div class="swatch-n">Turquesa</div></div>
         </div>
       </div>
 
       <div class="dress-avoid rv">
         <div class="swatch-group-title">Colores a evitar</div>
-        <div class="avoid-list">
-          <div class="avoid-item"><span class="avoid-c" style="background:#FFFFFF;border:1.5px solid var(--hair)"></span>Blanco · reservado para la novia</div>
+        <div class="dress-swatches">
+          <div class="swatch"><div class="swatch-c glow" style="background:#FFFFFF"></div><div class="swatch-n">Blanco</div></div>
         </div>
+        <p style="font-family:var(--sans);font-size:16px;color:var(--ink-soft);margin-top:6px">Reservado para la novia</p>
       </div>
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ LOVE YOU — anillos (efecto pedido por el cliente) ════════════════ -->
   <section class="love-sec" id="loveyou" aria-label="Love you">
@@ -1048,7 +1083,6 @@ body{font-size:17px}
     <p class="love-caption">Dos anillos, una promesa y toda una vida juntos.</p>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- ════════════════ GALERÍA — RUEDA 3D ════════════════ -->
   <section class="gallery" id="galeria">
@@ -1059,21 +1093,21 @@ body{font-size:17px}
     </div>
     <div class="wheel-scene rv" id="wheel-scene">
       <div class="wheel-ring" id="wheel-ring">
-        <div class="wheel-card"><img src="g01.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
-        <div class="wheel-card"><img src="hero.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
-        <div class="wheel-card"><img src="g04.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
-        <div class="wheel-card"><img src="g03.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
-        <div class="wheel-card"><img src="g01.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
-        <div class="wheel-card"><img src="hero.jpg" alt="Eliseo &amp; Arely" loading="eager"></div>
+        <div class="wheel-card"><div class="wc-img"><img src="g01.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="g01.jpg" alt=""><i></i></div></div>
+        <div class="wheel-card"><div class="wc-img"><img src="hero.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="hero.jpg" alt=""><i></i></div></div>
+        <div class="wheel-card"><div class="wc-img"><img src="g04.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="g04.jpg" alt=""><i></i></div></div>
+        <div class="wheel-card"><div class="wc-img"><img src="g03.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="g03.jpg" alt=""><i></i></div></div>
+        <div class="wheel-card"><div class="wc-img"><img src="g01.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="g01.jpg" alt=""><i></i></div></div>
+        <div class="wheel-card"><div class="wc-img"><img src="hero.jpg" alt="Eliseo &amp; Arely"></div><div class="wc-refl" aria-hidden="true"><img src="hero.jpg" alt=""><i></i></div></div>
       </div>
     </div>
     <p class="gal-hint rv">arrastra para girar</p>
   </section>
 
-  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ MESA DE REGALOS ════════════════ -->
   <section id="regalos" class="sec section-bg" style="text-align:center">
+    <div class="ink-bg flip" aria-hidden="true"><i style="background-image:url('ink/ink-oval.webp')"></i></div>
     <div class="sec-inner">
       <div class="eyebrow rv">Mesa de Regalos</div>
       <h2 class="rv">Un <em>Obsequio</em></h2>
@@ -1084,58 +1118,44 @@ body{font-size:17px}
         <!-- PENDIENTE CLIENTE: mesa de regalos / cuentas -->
         <div class="tbd sheen">Detalles de la mesa de regalos por confirmar</div>
 
-        <button class="env-interactive" aria-label="Sobre — toca para abrir" aria-expanded="false">
-          <div class="env-body sheen">
-            <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="env-fill" x1="0" y1="1" x2="1" y2="0">
-                  <stop offset="0%" stop-color="#FFFCEC"/>
-                  <stop offset="100%" stop-color="#F2EDD6"/>
-                </linearGradient>
-              </defs>
-              <rect x="18" y="52" width="224" height="132" rx="10" fill="url(#env-fill)" stroke="rgba(164,128,70,.6)" stroke-width="1.4"/>
-              <path d="M18 184 L130 110 L242 184" stroke="rgba(164,128,70,.38)" stroke-width="1" fill="none"/>
-              <line x1="90"  y1="30" x2="90"  y2="20" stroke="#A48046" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
-              <line x1="130" y1="24" x2="130" y2="14" stroke="#A48046" stroke-width="1.3" stroke-linecap="round" opacity=".7"/>
-              <line x1="170" y1="30" x2="170" y2="20" stroke="#A48046" stroke-width="1.3" stroke-linecap="round" opacity=".55"/>
-              <line x1="110" y1="18" x2="110" y2="10" stroke="#D4BC8A" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-              <line x1="150" y1="18" x2="150" y2="10" stroke="#D4BC8A" stroke-width="1" stroke-linecap="round" opacity=".4"/>
-              <circle cx="130" cy="118" r="16" fill="rgba(164,128,70,.18)" stroke="rgba(164,128,70,.55)" stroke-width="1"/>
-              <text x="130" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#2A2418" opacity=".8">E&amp;A</text>
-            </svg>
-            <div class="env-flap-wrap" aria-hidden="true">
-              <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%">
-                <defs>
-                  <linearGradient id="flap-fill" x1="0" y1="1" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#D4C5B2"/>
-                    <stop offset="100%" stop-color="#FFFCEC"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 0 L112 86 L224 0 Z" fill="url(#flap-fill)" stroke="rgba(164,128,70,.55)" stroke-width="1.5" stroke-linejoin="round"/>
+        <div class="env-rain" id="envRain" aria-hidden="true"></div>
+        <div class="env-stage">
+          <button class="env-interactive" id="envGift" type="button" aria-label="Sobre — toca para abrir" aria-expanded="false">
+            <div class="env-body" id="envGiftBody">
+              <svg class="env-svg" viewBox="0 0 260 200" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="envPaper" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#FFFDF6"/><stop offset="100%" stop-color="#F6F0DF"/></linearGradient></defs>
+                <rect x="18" y="52" width="224" height="132" rx="8" fill="url(#envPaper)" stroke="#B8923F" stroke-width="1.6"/>
+                <path d="M18 184 L130 110 L242 184" stroke="rgba(168,132,62,.45)" stroke-width="1.1" fill="none"/>
+              </svg>
+              <div class="env-flap-wrap" aria-hidden="true">
+                <svg viewBox="0 0 224 86" preserveAspectRatio="none" style="width:100%;height:100%;display:block">
+                  <defs><linearGradient id="envFlap" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#F3EBD4"/><stop offset="100%" stop-color="#FFFCF2"/></linearGradient></defs>
+                  <path d="M0 0 L112 86 L224 0 Z" fill="url(#envFlap)" stroke="#B8923F" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <svg class="env-seal" viewBox="0 0 60 60" aria-hidden="true">
+                <circle cx="30" cy="30" r="28" fill="#4F5B2A"/>
+                <circle cx="30" cy="30" r="28" fill="none" stroke="#2C351A" stroke-width="2" opacity=".55"/>
+                <circle cx="30" cy="30" r="21.5" fill="none" stroke="#E3C27A" stroke-width="1.1"/>
+                <text x="30" y="36" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="17" fill="#E3C27A">E&amp;A</text>
               </svg>
             </div>
-          </div>
-          <div class="env-open-content" aria-live="polite">
-            <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <rect x="8" y="22" width="36" height="24" rx="5"/>
-              <path d="M8 30 Q26 38 44 30"/>
-              <rect x="18" y="8" width="16" height="16" rx="2"/>
-              <path d="M18 8 Q26 3 34 8"/>
-              <rect x="20" y="28" width="12" height="2.5" rx="1.25" fill="currentColor" stroke="none" opacity=".4"/>
-            </svg>
-            <p class="env-title">Con amor</p>
-            <p class="env-desc">Tu presencia es nuestro mejor regalo. ¡Gracias por tu cariño!</p>
-          </div>
-        </button>
-        <p class="env-tap-hint">Toca el sobre</p>
+            <div class="env-open-content" aria-live="polite">
+              <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="22" width="36" height="24" rx="5"/><path d="M8 30 Q26 38 44 30"/><rect x="18" y="8" width="16" height="16" rx="2"/><path d="M18 8 Q26 3 34 8"/></svg>
+              <p class="env-title">Tu presencia es nuestro regalo</p>
+              <p class="env-desc">Si deseas tener un detalle con nosotros, el día de la boda habrá un buzón para tus sobres.</p>
+            </div>
+          </button>
+          <button class="env-tap-hint" id="envGiftHint" type="button">Toca para abrir</button>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--bg);--to:#2C351A" aria-hidden="true"></div>
 
   <!-- ════════════════ ÁLBUM COMPARTIDO ════════════════ -->
-  <section id="album" class="sec sec-dark" style="text-align:center;overflow:hidden">
+  <section id="album" class="sec sec-dark" data-top="#2C351A" data-bot="#283117" style="text-align:center;overflow:hidden">
+    <div class="ink-bg flip" aria-hidden="true" style="opacity:.16;mix-blend-mode:screen"><i style="background-image:url('ink/ink-footer.webp')"></i></div>
     <div class="sec-inner">
       <div class="eyebrow">Comparte el Momento</div>
       <h2 style="font-size:clamp(28px,7vw,44px)">Álbum <em>Compartido</em></h2>
@@ -1159,7 +1179,6 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:#2C351A;--to:var(--surface)" aria-hidden="true"></div>
 
   <!-- ════════════════ SOLO ADULTOS ════════════════ -->
   <section class="sec section-surface" style="text-align:center">
@@ -1178,11 +1197,10 @@ body{font-size:17px}
     </div>
   </section>
 
-  <div class="seam" style="--from:var(--surface);--to:var(--bg)" aria-hidden="true"></div>
 
   <!-- ════════════════ RSVP ════════════════ -->
   <section id="rsvp" class="sec section-bg" style="text-align:center;overflow:hidden">
-    <div class="sec-flora" style="background-image:url('botanica3.webp');opacity:.10"></div>
+    <div class="ink-bg" aria-hidden="true"><i style="background-image:url('ink/ink-hero.webp')"></i></div>
     <div class="rosa rosa--tr" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
     <div class="sec-inner">
       <div class="eyebrow rv">Confirmación</div>
@@ -1206,11 +1224,18 @@ body{font-size:17px}
           <h2 class="rsvp-title">Tu presencia <em>significa</em> todo</h2>
           <p class="rsvp-text">Por favor confírmanos tu asistencia antes del <strong style="color:var(--gold-deep)">18 de octubre de 2026</strong>.</p>
 
+          <p class="rsvp-hi" id="rsvp-hi" style="display:none"></p>
           <p id="rsvp-pases-note"></p>
 
-          <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
-            <div class="rsvp-pases-label">Pases</div>
-            <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+          <div class="rsvp-boxes">
+            <div class="rsvp-pases-display" id="rsvp-pases-display" style="display:none">
+              <div class="rsvp-pases-label">Pases</div>
+              <div class="rsvp-pases-num" id="rsvp-pases-num">1</div>
+            </div>
+            <div class="rsvp-pases-display" id="rsvp-menores-display" style="display:none">
+              <div class="rsvp-pases-label">Menores</div>
+              <div class="rsvp-pases-num" id="rsvp-menores-num">0</div>
+            </div>
           </div>
 
           <div id="rsvp-bandeja">
@@ -1242,7 +1267,7 @@ body{font-size:17px}
   </section>
 
   <!-- ════════════════ FOOTER ════════════════ -->
-  <footer>
+  <footer data-top="#2C351A">
     <div class="footer-names rv">Eliseo <span class="amp">&amp;</span> Arely</div>
     <div class="footer-date rv">26 · Noviembre · 2026 · Winston-Salem, NC</div>
     <div class="footer-hr"></div>
@@ -1377,8 +1402,6 @@ function launchInvitation(){
 })();
 
 // ── HERO PARALLAX ──
-gsap.to('.hero-bg-wrap',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-gsap.to('.hero-content',{yPercent:-6,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
 // ── DATE HERO COUNT-TO ──
 document.querySelectorAll('[data-count-to]').forEach(el=>{
@@ -1425,6 +1448,25 @@ document.querySelectorAll('.itin-item').forEach(function(item,idx){
 
 // ── SWATCHES ──
 gsap.fromTo('.swatch',{opacity:0,scale:.4,y:28},{opacity:1,scale:1,y:0,duration:1,stagger:.09,ease:'elastic.out(1,.6)',scrollTrigger:{trigger:'.dress-swatches',start:'top 86%'}});
+// Círculos que intercambian lugar en bucle
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.swap-row').forEach(function(row){
+    var sw=row.querySelectorAll('.swatch'); if(sw.length<2) return;
+    var a=sw[0],b=sw[1],tl=null;
+    function build(){
+      if(tl) tl.kill(); gsap.set([a,b],{x:0});
+      var dx=b.getBoundingClientRect().left-a.getBoundingClientRect().left;
+      tl=gsap.timeline({repeat:-1,repeatDelay:1.6,delay:2})
+        .to(a,{x:dx,y:-14,duration:1.4,ease:'sine.inOut'},0).to(b,{x:-dx,y:14,duration:1.4,ease:'sine.inOut'},0)
+        .to([a,b],{y:0,duration:.5,ease:'sine.out'},1.0)
+        .to(a,{x:0,y:14,duration:1.4,ease:'sine.inOut'},3.5).to(b,{x:0,y:-14,duration:1.4,ease:'sine.inOut'},3.5)
+        .to([a,b],{y:0,duration:.5,ease:'sine.out'},4.5);
+    }
+    ScrollTrigger.create({trigger:row,start:'top 90%',once:true,onEnter:function(){setTimeout(build,1200)}});
+    addEventListener('resize',function(){ if(tl) build(); });
+  });
+})();
 
 // ── 3D WHEEL ──
 (function initWheel(){
@@ -1488,6 +1530,14 @@ gsap.fromTo('.swatch',{opacity:0,scale:.4,y:28},{opacity:1,scale:1,y:0,duration:
     isDrag=false;rafId=requestAnimationFrame(inertia);
   });
 
+  // giro automático continuo; se pausa fuera de pantalla y tras arrastrar retoma solo
+  var autoOn=!prefersReduced,inView=false,resumeAt=0;
+  ScrollTrigger.create({trigger:'#wheel-scene',start:'top bottom',end:'bottom top',onToggle:function(st){inView=st.isActive}});
+  gsap.ticker.add(function(){
+    if(!autoOn||!inView||isDrag||Math.abs(vel)>0.05||Date.now()<resumeAt) return;
+    setRot(rot-0.12);
+  });
+  ['mouseup','touchend'].forEach(function(ev){ window.addEventListener(ev,function(){ resumeAt=Date.now()+1800; }); });
   if(!prefersReduced){
     gsap.fromTo('.wheel-scene',{opacity:0,y:28},{opacity:1,y:0,duration:1.1,ease:'power3.out',scrollTrigger:{trigger:'.wheel-scene',start:'top 82%'}});
   }
@@ -1522,19 +1572,46 @@ gsap.fromTo('.swatch',{opacity:0,scale:.4,y:28},{opacity:1,scale:1,y:0,duration:
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('is-open')) closeLightbox(); });
 })();
 
-// ── SOBRE INTERACTIVO (regalos) ──
+// ── LLUVIA DE SOBRES ──
 (function(){
-  var btn=document.querySelector('.env-interactive');
-  if(!btn) return;
-  btn.addEventListener('click',function(){
-    var isOpen=btn.classList.toggle('open');
-    btn.setAttribute('aria-expanded',isOpen?'true':'false');
-  });
-  btn.addEventListener('touchstart',function(e){
-    e.preventDefault();
-    var isOpen=btn.classList.toggle('open');
-    btn.setAttribute('aria-expanded',isOpen?'true':'false');
-  },{passive:false});
+  var sec=document.getElementById('regalos'),rain=document.getElementById('envRain'),btn=document.getElementById('envGift'),body=document.getElementById('envGiftBody'),hint=document.getElementById('envGiftHint');
+  if(!sec||!rain||!btn) return;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var landed=false,visible=false,alive=0,MAX=22,spawn=null;
+  var DEPTHS=[{min:14,max:20,op:.4,dur:[9,12]},{min:20,max:28,op:.62,dur:[7,9]},{min:28,max:38,op:.85,dur:[5.5,7]}];
+  function make(){
+    if(!visible||alive>=MAX) return; alive++;
+    var d=DEPTHS[Math.floor(Math.random()*3)],w=d.min+Math.random()*(d.max-d.min);
+    var el=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    el.setAttribute('viewBox','0 0 34 24');el.setAttribute('class','env-rain-item');
+    el.style.width=w+'px';el.style.height=(w*24/34)+'px';el.style.left=(Math.random()*96)+'%';
+    el.innerHTML='<rect x="1" y="1" width="32" height="22" rx="2.5" fill="#FFFBF0" stroke="#B8923F" stroke-width="1.1"/><path d="M1 1 L17 13 L33 1" fill="#F4EAD0" stroke="#B8923F" stroke-width="1.1" stroke-linejoin="round"/><circle cx="17" cy="13" r="3" fill="#4F5B2A"/>';
+    rain.appendChild(el);
+    var H=sec.offsetHeight+60,dur=d.dur[0]+Math.random()*(d.dur[1]-d.dur[0]);
+    gsap.timeline({onComplete:function(){el.remove();alive--;}})
+      .fromTo(el,{y:-46,x:0,rotation:(Math.random()-.5)*50},{y:H,x:(Math.random()-.5)*70,rotation:(Math.random()-.5)*160,duration:dur,ease:'none'},0)
+      .fromTo(el,{opacity:0},{opacity:d.op,duration:dur*.15},0)
+      .to(el,{opacity:0,duration:dur*.2},dur*.8);
+  }
+  function loop(){ spawn=gsap.delayedCall(.45,function(){ make(); loop(); }); }
+  if(!RM){
+    ScrollTrigger.create({trigger:sec,start:'top bottom',end:'bottom top',onToggle:function(st){ visible=st.isActive; if(visible&&!spawn){ for(var i=0;i<6;i++) gsap.delayedCall(i*.25,make); loop(); } if(!visible&&spawn){ spawn.kill(); spawn=null; } }});
+  }
+  function land(cb){
+    if(landed){ if(cb) cb(); return; } landed=true;
+    gsap.fromTo(btn,{opacity:0,y:-150,rotation:-12,scale:.82},{opacity:1,y:0,rotation:0,scale:1,duration:RM?.3:1.15,ease:'back.out(1.5)',onComplete:function(){ body.classList.add('landed'); hint.classList.add('show'); if(cb) cb(); }});
+  }
+  ScrollTrigger.create({trigger:sec,start:'center 60%',once:true,onEnter:function(){land()},onEnterBack:function(){land()}});
+  function toggle(e){
+    if(e) e.preventDefault();
+    land(function(){
+      var open=btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      hint.textContent=open?'Toca para cerrar':'Toca para abrir';
+    });
+  }
+  btn.addEventListener('click',toggle);
+  hint.addEventListener('click',toggle);
 })();
 
 // ── PARTÍCULAS DORADAS ──
@@ -1618,8 +1695,11 @@ if(musicBtn){
   var fb=$('rsvp-feedback'),bandeja=$('rsvp-bandeja'),gracias=$('rsvp-gracias'),gT=$('rsvp-gracias-title'),gS=$('rsvp-gracias-sub'),editar=$('rsvp-editar-btn');
   if(!btn) return;
   var estado=null,saved=[];
-  if(para){note.textContent='Esta invitación es para '+para;note.style.display='block';}
-  if(q.get('pases')){num.textContent=pases;disp.style.display='flex';}
+  var hi=$('rsvp-hi');
+  function paintPases(){ num.textContent=pases; disp.style.display='flex'; note.textContent=pases===1?'Hemos reservado un lugar para ti.':'Hemos reservado '+pases+' lugares en tu honor.'; note.style.display='block'; }
+  if(para){hi.textContent=para;hi.style.display='';}
+  paintPases();
+  var men=parseInt(q.get('menores'),10); if(men>0){$('rsvp-menores-num').textContent=men;$('rsvp-menores-display').style.display='flex';}
   function setFb(t,c){fb.textContent=t;fb.style.color=c||'';}
   function renderFields(){
     fields.innerHTML='';
@@ -1663,6 +1743,8 @@ if(musicBtn){
   if(para){
     fetch(PANEL_API+'?nombre='+encodeURIComponent(para)+'&url_boda='+encodeURIComponent(RSVP_URL)).then(function(r){return r.json()}).then(function(resp){
       var d=resp&&resp.invitado;if(!d) return;
+      if(d.pases){pases=Math.max(1,parseInt(d.pases,10)||pases);paintPases();}
+      if(d.pases_menores>0){$('rsvp-menores-num').textContent=d.pases_menores;$('rsvp-menores-display').style.display='flex';}
       if(d.estado==='confirmado'||d.estado==='declino'){
         saved=(d.nombres_confirmados||[]).slice();select(d.estado);btnText.textContent='Actualizar respuesta';
         mostrarGracias(d.estado,d.nombres_confirmados||[]);
@@ -1723,14 +1805,14 @@ gsap.fromTo('.footer-date',{opacity:0,letterSpacing:'1em'},{opacity:1,letterSpac
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Hero: nombres suben y se desvanecen; foto se acerca
   if(!RM){
-    gsap.to('.hero-bg',{scale:1.08,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-    gsap.to('.hero-name',{y:-60,opacity:.15,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.fromTo('.hero-content',{y:0,opacity:1,filter:'blur(0px)'},{y:-110,opacity:0,filter:'blur(10px)',ease:'none',immediateRender:false,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    gsap.fromTo('.hero-bg',{y:0,filter:'blur(0px) brightness(1)'},{y:-70,filter:'blur(5px) brightness(.92)',ease:'none',immediateRender:false,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   }
   // Itinerario: línea que se dibuja con el scroll
   var fill=document.querySelector('.itin-line-fill');
   if(fill&&!RM){gsap.fromTo(fill,{scaleY:0},{scaleY:1,ease:'none',scrollTrigger:{trigger:'.itin-wrap',start:'top 75%',end:'bottom 60%',scrub:true}});}
   // Galería: revelado con máscara
-  if(!RM){gsap.fromTo('.wheel-card',{clipPath:'inset(100% 0 0 0 round 14px)'},{clipPath:'inset(0% 0 0 0 round 14px)',duration:1.1,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.wheel-scene',start:'top 80%'}});}
+  if(!RM){gsap.fromTo('.wc-img',{clipPath:'inset(100% 0 0 0 round 14px)'},{clipPath:'inset(0% 0 0 0 round 14px)',duration:1.1,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.wheel-scene',start:'top 80%'}});}
   // Títulos: reveal por palabras
   document.querySelectorAll('.sec h2:not(.rsvp-title), .gallery h2').forEach(function(h){
     if(h.closest('.date-hero')) return;
@@ -1751,16 +1833,6 @@ gsap.fromTo('.footer-date',{opacity:0,letterSpacing:'1em'},{opacity:1,letterSpac
   gsap.fromTo(rings,{opacity:0,y:RM?0:-120,rotateY:RM?0:540,scale:RM?1:1.6},{opacity:1,y:0,rotateY:0,scale:1,duration:1.4,stagger:.35,ease:'bounce.out',delay:.4,scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
   if(!RM){gsap.to('.ring-glint',{strokeDashoffset:-260,duration:3.2,repeat:-1,ease:'none'});}
   gsap.fromTo('.love-caption',{opacity:0,y:14},{opacity:1,y:0,duration:1,delay:1.4,scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
-  // Divisores entre secciones que se dibujan
-  document.querySelectorAll('.seam').forEach(function(sm,i){
-    if(i===0) return;
-    var svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 260 24');svg.setAttribute('class','draw-div');svg.setAttribute('aria-hidden','true');
-    var p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d','M10 12 Q65 0 120 12 M140 12 Q195 24 250 12 M126 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0');svg.appendChild(p);
-    svg.style.background='transparent';svg.style.position='relative';svg.style.marginTop='-42px';svg.style.zIndex='3';
-    sm.after(svg);
-    var len=420;p.style.strokeDasharray=len;p.style.strokeDashoffset=RM?0:len;
-    if(!RM) gsap.to(p,{strokeDashoffset:0,duration:1.4,ease:'power2.out',scrollTrigger:{trigger:svg,start:'top 92%'}});
-  });
 })();
 
 // ── MENÚ FLOTANTE ──
@@ -1792,6 +1864,40 @@ gsap.fromTo('.footer-date',{opacity:0,letterSpacing:'1em'},{opacity:1,letterSpac
   // aparece después de abrir el sobre
   window.__showNav=function(){setTimeout(function(){pill.classList.add('show')},1400)};
 })();
+
+
+// ── FUNDIDO UNIFORME ENTRE SECCIONES ──
+function initSectionFades(){
+  var secs=[].slice.call(document.querySelectorAll('.wrap > section, .wrap > footer'));
+  var pageBg=getComputedStyle(document.body).backgroundColor;
+  function rgb(c){var m=c.match(/[\d.]+/g);if(!m)return null;return {r:+m[0],g:+m[1],b:+m[2],a:m[3]===undefined?1:+m[3]};}
+  function hex(h){h=h.replace('#','');return {r:parseInt(h.substr(0,2),16),g:parseInt(h.substr(2,2),16),b:parseInt(h.substr(4,2),16),a:1};}
+  function edge(el,which){
+    var d=el.getAttribute(which==='top'?'data-top':'data-bot');
+    if(d) return hex(d);
+    var c=rgb(getComputedStyle(el).backgroundColor);
+    if(!c||c.a===0) c=rgb(pageBg);
+    return c;
+  }
+  function grad(dir,c){
+    var st=[];
+    for(var i=0;i<=8;i++){var t=i/8,a=1-t*t*(3-2*t);st.push('rgba('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+','+a.toFixed(3)+') '+(t*100).toFixed(1)+'%');}
+    return 'linear-gradient(to '+dir+','+st.join(',')+')';
+  }
+  function add(el,pos,c,h){
+    var f=document.createElement('i');f.className='sfade sfade--'+pos;f.setAttribute('aria-hidden','true');
+    f.style.background=grad(pos==='top'?'bottom':'top',c);if(h)f.style.height=h+'px';
+    el.insertBefore(f,el.firstChild);
+  }
+  for(var i=0;i<secs.length-1;i++){
+    var A=secs[i],B=secs[i+1],ca=edge(A,'bot'),cb=edge(B,'top');
+    var mid={r:(ca.r+cb.r)/2,g:(ca.g+cb.g)/2,b:(ca.b+cb.b)/2};
+    var isHero=A.classList.contains('hero');
+    if(!isHero) add(A,'bot',mid);
+    add(B,'top',mid,isHero?90:null);
+  }
+}
+initSectionFades();
 
 // ── SCROLL LIMIT ──
 (function(){
