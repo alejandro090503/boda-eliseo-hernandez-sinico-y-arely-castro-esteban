@@ -983,7 +983,7 @@ body{font-size:17px}
 
 <!-- ENVELOPE SCREEN -->
 <div id="envelope-screen" role="button" aria-label="Toca para abrir la invitación" tabindex="0">
-  <img id="env-image" src="sobre.webp?v=3" alt="">
+  <img id="env-image" src="sobre.webp?v=4" alt="">
   <video id="env-video" muted playsinline preload="auto">
     <source src="apertura.mp4?v=3" type="video/mp4">
   </video>
@@ -1625,8 +1625,11 @@ function launchInvitation(){
     if(envVideo){
       envVideo.currentTime=0;
       envVideo.play().catch(()=>{ triggerFlash(); });
-      gsap.to(envImage,{opacity:0,duration:.4});
-      gsap.to(envVideo,{opacity:1,duration:.4});
+      // cambio exacto: la imagen es el primer cuadro del video; se muestra el video solo cuando ya avanza
+      var swapped=false;
+      function swap(){ if(swapped) return; swapped=true; gsap.set(envVideo,{opacity:1}); gsap.set(envImage,{opacity:0,delay:.05}); }
+      envVideo.addEventListener('timeupdate',function onT(){ if(envVideo.currentTime>0.04){ envVideo.removeEventListener('timeupdate',onT); swap(); } });
+      if(envVideo.requestVideoFrameCallback){ envVideo.requestVideoFrameCallback(function(){ swap(); }); }
       envVideo.addEventListener('timeupdate',function onTick(){
         if(envVideo.currentTime>=VIDEO_CUT){
           envVideo.pause();
