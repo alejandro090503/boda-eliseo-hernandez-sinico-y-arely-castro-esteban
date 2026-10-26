@@ -914,6 +914,28 @@ body{font-size:17px}
 .hosp-resp{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--olive);max-width:330px;margin:12px auto 0;line-height:1.55;padding:12px 16px;border:1px solid rgba(168,132,62,.45);border-radius:14px;background:rgba(255,255,255,.75)}
 .hm-rec.igl{background:#FFFDF7}
 
+
+/* ════════ REGALOS v4: Zelle + moño interactivo ════════ */
+.zl-card{max-width:330px;margin:0 auto;padding:26px 22px 22px;background:#fff;border:1.5px solid var(--gold);border-radius:18px;box-shadow:0 14px 34px -14px rgba(42,36,24,.22);animation:levitate 6.5s ease-in-out infinite}
+.zl-logo{width:128px;height:auto;display:block;margin:0 auto 12px}
+.zl-lbl{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--ink-soft);line-height:1.5;margin:0 0 6px}
+.zl-num{font-family:var(--sans);font-weight:600;font-size:26px;letter-spacing:.04em;color:#6D1ED4;margin:0 0 14px;font-variant-numeric:lining-nums tabular-nums}
+.zl-copy{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 22px;border-radius:999px;border:1.5px solid #6D1ED4;background:#fff;color:#6D1ED4;font-family:var(--sans);font-weight:600;font-size:15px;cursor:pointer;transition:background .25s,color .25s}
+.zl-copy svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.zl-copy.ok{background:#6D1ED4;color:#fff}
+.gb-or{display:flex;align-items:center;gap:14px;max-width:300px;margin:34px auto 18px;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep)}
+.gb-or::before,.gb-or::after{content:"";flex:1;height:1px;background:var(--hair-gold)}
+.gb-stage{position:relative}
+.gb{display:block;margin:0 auto;padding:0;border:none;background:none;cursor:pointer;width:min(240px,68vw);touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.gb-svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 12px 22px rgba(42,36,24,.16))}
+.gb:not(.open) .gb-bow{animation:bowWiggle 3.2s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes bowWiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-6deg)}90%{transform:rotate(5deg)}95%{transform:rotate(-3deg)}}
+.gb-hint{display:inline-block;margin-top:10px;min-height:44px;padding:10px 16px;font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);cursor:pointer}
+.gb-msg{max-width:320px;margin:0 auto;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s ease,opacity .5s ease .2s}
+.gb-msg.show{max-height:260px;opacity:1}
+.gb-msg-t{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(24px,7vw,30px);color:var(--ink);margin:4px 0 6px}
+.gb-msg-d{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--ink-soft);line-height:1.6}
+@media(prefers-reduced-motion:reduce){.zl-card,.gb-bow{animation:none!important}}
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.hero-scroll::after{animation:none}}
 </style>
@@ -1273,41 +1295,67 @@ body{font-size:17px}
       <div class="gifts-wrap rv" style="margin-top:36px">
         <p class="gifts-sub">Tu presencia es nuestro regalo más preciado. Si deseas obsequiarnos algo, te lo agradecemos de corazón.</p>
 
-        <!-- PENDIENTE CLIENTE: mesa de regalos / cuentas -->
-        <div class="tbd sheen">Detalles de la mesa de regalos por confirmar</div>
-
-        <div class="env-rain" id="envRain" aria-hidden="true"></div>
-        <div class="env-stage">
-          <button class="env-interactive" id="envGift" type="button" aria-label="Regalo — toca para abrir" aria-expanded="false">
-            <div class="env-body gift-body" id="envGiftBody">
-              <svg class="gift-svg" viewBox="0 0 200 200" aria-hidden="true">
-                <defs>
-                  <linearGradient id="gBox" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F1ECDD"/></linearGradient>
-                  <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".75" stop-color="#9A7128"/><stop offset="1" stop-color="#E9C978"/></linearGradient>
-                </defs>
-                <ellipse cx="100" cy="188" rx="70" ry="7" fill="rgba(42,36,24,.12)"/>
-                <rect x="34" y="92" width="132" height="94" rx="6" fill="url(#gBox)" stroke="#B8923F" stroke-width="1.6"/>
-                <rect x="91" y="92" width="18" height="94" fill="url(#gGold)"/>
-                <rect x="34" y="122" width="132" height="10" fill="#4F5B2A" opacity=".9"/>
-                <circle cx="100" cy="150" r="14" fill="#4F5B2A"/><circle cx="100" cy="150" r="10.5" fill="none" stroke="#E3C27A" stroke-width="1"/>
-                <text x="100" y="154" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="10" fill="#E3C27A">E&amp;A</text>
-                <g class="gift-lid">
-                  <rect x="26" y="70" width="148" height="26" rx="5" fill="url(#gBox)" stroke="#B8923F" stroke-width="1.6"/>
-                  <rect x="91" y="70" width="18" height="26" fill="url(#gGold)"/>
-                  <path d="M100 70 C80 40 52 46 62 62 C68 72 88 70 100 70 Z" fill="url(#gGold)" stroke="#9A7128" stroke-width="1"/>
-                  <path d="M100 70 C120 40 148 46 138 62 C132 72 112 70 100 70 Z" fill="url(#gGold)" stroke="#9A7128" stroke-width="1"/>
-                  <circle cx="100" cy="68" r="7" fill="url(#gGold)" stroke="#9A7128" stroke-width="1"/>
-                </g>
-                <g class="gift-sparks" stroke="#E3C27A" stroke-width="2" stroke-linecap="round"><path d="M100 54v-16M78 62l-10-10M122 62l10-10M66 78H52M134 78h14"/></g>
-              </svg>
-            </div>
-            <div class="env-open-content" aria-live="polite">
-              <svg class="env-mailbox-icon" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="8" y="22" width="36" height="24" rx="5"/><path d="M8 30 Q26 38 44 30"/><rect x="18" y="8" width="16" height="16" rx="2"/><path d="M18 8 Q26 3 34 8"/></svg>
-              <p class="env-title">Tu presencia es nuestro regalo</p>
-              <p class="env-desc">Muy pronto compartiremos aquí los detalles de nuestra mesa de regalos.</p>
-            </div>
+        <!-- ZELLE -->
+        <div class="zl-card sheen">
+          <img class="zl-logo" src="zelle.webp" alt="Zelle" width="360" height="147">
+          <p class="zl-lbl">Si deseas enviarnos tu regalo por Zelle</p>
+          <p class="zl-num" id="zlNum">(336) 259-9667</p>
+          <button class="zl-copy" id="zlCopy" type="button" data-num="3362599667">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+            <span>Copiar número</span>
           </button>
-          <button class="env-tap-hint" id="envGiftHint" type="button">Toca para abrir</button>
+        </div>
+
+        <div class="gb-or"><span>y también</span></div>
+
+        <!-- MESA DE REGALOS: desata el moño -->
+        <div class="gb-stage">
+          <button class="gb" id="giftBox" type="button" aria-expanded="false" aria-label="Regalo — toca para desatar el moño">
+            <svg class="gb-svg" viewBox="0 0 240 250" aria-hidden="true">
+              <defs>
+                <linearGradient id="gbPaper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#EFE9D8"/></linearGradient>
+                <linearGradient id="gbGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".75" stop-color="#9A7128"/><stop offset="1" stop-color="#E9C978"/></linearGradient>
+                <clipPath id="gbClip"><rect x="40" y="0" width="160" height="236"/></clipPath>
+              </defs>
+              <ellipse cx="120" cy="240" rx="88" ry="8" fill="rgba(42,36,24,.12)"/>
+              <!-- tarjeta que sale de la caja -->
+              <g clip-path="url(#gbClip)">
+                <g class="gb-card">
+                  <rect x="62" y="118" width="116" height="104" rx="6" fill="#FFFDF6" stroke="#B8923F" stroke-width="1.4"/>
+                  <rect x="68" y="124" width="104" height="92" rx="4" fill="none" stroke="rgba(184,146,63,.45)" stroke-width="1"/>
+                  <text x="120" y="152" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="600" font-size="17" fill="#2A2418">Mesa de</text>
+                  <text x="120" y="172" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="600" font-size="17" fill="#7A5A1C">Regalos</text>
+                  <path d="M96 184h48" stroke="#C99A3E" stroke-width="1"/>
+                  <text x="120" y="202" text-anchor="middle" font-family="'Montserrat',sans-serif" font-weight="600" font-size="8" letter-spacing="1.5" fill="#4F5B2A">E &amp; A</text>
+                </g>
+              </g>
+              <!-- caja -->
+              <rect x="40" y="128" width="160" height="108" rx="6" fill="url(#gbPaper)" stroke="#B8923F" stroke-width="1.6"/>
+              <rect class="gb-rib-v" x="110" y="128" width="20" height="108" fill="#4F5B2A"/>
+              <rect class="gb-rib-v" x="113" y="128" width="2" height="108" fill="#E3C27A" opacity=".8"/>
+              <!-- tapa -->
+              <g class="gb-lid">
+                <rect x="30" y="100" width="180" height="32" rx="5" fill="url(#gbPaper)" stroke="#B8923F" stroke-width="1.6"/>
+                <rect class="gb-rib-l" x="110" y="100" width="20" height="32" fill="#4F5B2A"/>
+                <!-- moño -->
+                <g class="gb-bow">
+                  <path class="gb-loop-l" d="M120 100 C96 66 58 74 70 94 C78 106 104 102 120 100 Z" fill="url(#gbGold)" stroke="#9A7128" stroke-width="1"/>
+                  <path class="gb-loop-r" d="M120 100 C144 66 182 74 170 94 C162 106 136 102 120 100 Z" fill="url(#gbGold)" stroke="#9A7128" stroke-width="1"/>
+                  <path class="gb-tail-l" d="M116 102 L100 128 L108 126 L112 134 Z" fill="url(#gbGold)" stroke="#9A7128" stroke-width=".8"/>
+                  <path class="gb-tail-r" d="M124 102 L140 128 L132 126 L128 134 Z" fill="url(#gbGold)" stroke="#9A7128" stroke-width=".8"/>
+                  <circle class="gb-knot" cx="120" cy="99" r="8" fill="url(#gbGold)" stroke="#9A7128" stroke-width="1"/>
+                </g>
+              </g>
+              <g class="gb-sparks" stroke="#E3C27A" stroke-width="2.2" stroke-linecap="round" opacity="0">
+                <path d="M120 70v-16M92 78l-10-10M148 78l10-10M78 100H62M162 100h16"/>
+              </g>
+            </svg>
+          </button>
+          <p class="gb-hint" id="giftHint">Toca el moño para abrir</p>
+          <div class="gb-msg" id="giftMsg" aria-live="polite">
+            <p class="gb-msg-t">Mesa de regalos</p>
+            <p class="gb-msg-d">El día de la boda habrá una mesa de regalos en la recepción para recibir tus obsequios con mucho cariño.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1696,46 +1744,43 @@ gsap.fromTo('.swatch',{opacity:0,scale:.4,y:28},{opacity:1,scale:1,y:0,duration:
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb.classList.contains('is-open')) closeLightbox(); });
 })();
 
-// ── LLUVIA DE SOBRES ──
+// ── MESA DE REGALOS: desata el moño ──
 (function(){
-  var sec=document.getElementById('regalos'),rain=document.getElementById('envRain'),btn=document.getElementById('envGift'),body=document.getElementById('envGiftBody'),hint=document.getElementById('envGiftHint');
-  if(!sec||!rain||!btn) return;
-  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var landed=false,visible=false,alive=0,MAX=22,spawn=null;
-  var DEPTHS=[{min:14,max:20,op:.4,dur:[9,12]},{min:20,max:28,op:.62,dur:[7,9]},{min:28,max:38,op:.85,dur:[5.5,7]}];
-  function make(){
-    if(!visible||alive>=MAX) return; alive++;
-    var d=DEPTHS[Math.floor(Math.random()*3)],w=d.min+Math.random()*(d.max-d.min);
-    var el=document.createElementNS('http://www.w3.org/2000/svg','svg');
-    el.setAttribute('viewBox','0 0 30 30');el.setAttribute('class','env-rain-item');
-    el.style.width=w+'px';el.style.height=w+'px';var rib=Math.random()<.5?'#C99A3E':'#4F5B2A';el.style.left=(Math.random()*96)+'%';
-    el.innerHTML='<rect x="3" y="11" width="24" height="17" rx="1.5" fill="#FFFDF6" stroke="#B8923F" stroke-width="1"/><rect x="1.5" y="7" width="27" height="6" rx="1.2" fill="#FBF6E8" stroke="#B8923F" stroke-width="1"/><rect x="13" y="7" width="4" height="21" fill="'+rib+'"/><path d="M15 7c-3-5-8-4-6-1 1 1.5 4 1 6 1zM15 7c3-5 8-4 6-1-1 1.5-4 1-6 1z" fill="'+rib+'"/>';
-    rain.appendChild(el);
-    var H=sec.offsetHeight+60,dur=d.dur[0]+Math.random()*(d.dur[1]-d.dur[0]);
-    gsap.timeline({onComplete:function(){el.remove();alive--;}})
-      .fromTo(el,{y:-46,x:0,rotation:(Math.random()-.5)*50},{y:H,x:(Math.random()-.5)*70,rotation:(Math.random()-.5)*160,duration:dur,ease:'none'},0)
-      .fromTo(el,{opacity:0},{opacity:d.op,duration:dur*.15},0)
-      .to(el,{opacity:0,duration:dur*.2},dur*.8);
+  var box=document.getElementById('giftBox'),hint=document.getElementById('giftHint'),msg=document.getElementById('giftMsg');
+  if(!box) return;
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches,open=false,busy=false;
+  var q=function(c){return box.querySelector(c)};
+  var tl=gsap.timeline({paused:true,onComplete:function(){busy=false},onReverseComplete:function(){busy=false}})
+    .to(q('.gb-loop-l'),{rotation:-55,x:-26,y:30,opacity:0,transformOrigin:'100% 100%',duration:.55,ease:'power2.in'},0)
+    .to(q('.gb-loop-r'),{rotation:55,x:26,y:30,opacity:0,transformOrigin:'0% 100%',duration:.55,ease:'power2.in'},0)
+    .to([q('.gb-tail-l'),q('.gb-tail-r'),q('.gb-knot')],{y:40,opacity:0,duration:.45,ease:'power2.in'},.1)
+    .to(box.querySelectorAll('.gb-rib-v,.gb-rib-l'),{scaleY:0,transformOrigin:'50% 100%',duration:.45,ease:'power2.inOut'},.35)
+    .to(q('.gb-lid'),{y:96,x:58,rotation:8,scale:.82,transformOrigin:'0% 100%',duration:.75,ease:'back.out(1.3)'},.7)
+    .to(q('.gb-card'),{y:-96,duration:.8,ease:'back.out(1.3)'},1.0)
+    .to(q('.gb-sparks'),{opacity:1,duration:.3},1.2)
+    .to(q('.gb-sparks'),{opacity:0,duration:.6},1.9);
+  function toggle(){
+    if(busy) return; busy=true; open=!open;
+    box.setAttribute('aria-expanded',open?'true':'false');
+    box.classList.toggle('open',open);
+    if(RM){ tl.progress(open?1:0); busy=false; } else if(open){ tl.timeScale(1).play(); } else { tl.timeScale(1.6).reverse(); }
+    hint.textContent=open?'Toca para volver a envolver':'Toca el moño para abrir';
+    msg.classList.toggle('show',open);
   }
-  function loop(){ spawn=gsap.delayedCall(.45,function(){ make(); loop(); }); }
-  if(!RM){
-    ScrollTrigger.create({trigger:sec,start:'top bottom',end:'bottom top',onToggle:function(st){ visible=st.isActive; if(visible&&!spawn){ for(var i=0;i<6;i++) gsap.delayedCall(i*.25,make); loop(); } if(!visible&&spawn){ spawn.kill(); spawn=null; } }});
-  }
-  function land(cb){
-    if(landed){ if(cb) cb(); return; } landed=true;
-    gsap.fromTo(btn,{opacity:0,y:-150,rotation:-12,scale:.82},{opacity:1,y:0,rotation:0,scale:1,duration:RM?.3:1.15,ease:'back.out(1.5)',onComplete:function(){ body.classList.add('landed'); hint.classList.add('show'); if(cb) cb(); }});
-  }
-  ScrollTrigger.create({trigger:sec,start:'center 60%',once:true,onEnter:function(){land()},onEnterBack:function(){land()}});
-  function toggle(e){
-    if(e) e.preventDefault();
-    land(function(){
-      var open=btn.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-      hint.textContent=open?'Toca para cerrar':'Toca para abrir';
-    });
-  }
-  btn.addEventListener('click',toggle);
+  box.addEventListener('click',toggle);
   hint.addEventListener('click',toggle);
+  gsap.fromTo(box,{y:-40,opacity:0},{y:0,opacity:1,duration:1,ease:'bounce.out',scrollTrigger:{trigger:box,start:'top 85%'}});
+})();
+
+// ── ZELLE: copiar número ──
+(function(){
+  var b=document.getElementById('zlCopy'); if(!b) return;
+  b.addEventListener('click',function(){
+    var n=b.dataset.num,lbl=b.querySelector('span');
+    function ok(){ lbl.textContent='¡Copiado!'; b.classList.add('ok'); setTimeout(function(){ lbl.textContent='Copiar número'; b.classList.remove('ok'); },2000); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(n).then(ok,function(){ fallback(); }); } else fallback();
+    function fallback(){ var t=document.createElement('textarea'); t.value=n; t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select(); try{document.execCommand('copy');}catch(e){} t.remove(); ok(); }
+  });
 })();
 
 // ── PARTÍCULAS DORADAS ──
