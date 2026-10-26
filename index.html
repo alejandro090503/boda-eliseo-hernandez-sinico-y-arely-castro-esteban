@@ -21,7 +21,7 @@
 <link rel="preload" as="image" href="hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Italiana&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Italiana&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -50,7 +50,7 @@
   --serif:'Cormorant Garamond',Georgia,serif;
   --script:'Pinyon Script',cursive;
   --italiana:'Italiana',serif;
-  --sans:'Jost',system-ui,sans-serif;
+  --sans:'Montserrat',system-ui,sans-serif;
 }
 
 /* ============ RESET ============ */
@@ -608,7 +608,9 @@ body{font-size:17px}
 .love-l{display:inline-block}
 .love-ring{display:inline-block;width:.78em;height:.78em;position:relative}
 .love-ring svg{width:100%;height:100%;overflow:visible}
-.love-caption{font-family:var(--serif);font-style:italic;font-size:clamp(20px,5.4vw,24px);color:var(--ink-soft);margin-top:30px;line-height:1.6;max-width:330px;margin-left:auto;margin-right:auto}
+.love-verse{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(21px,5.8vw,26px);color:var(--ink);line-height:1.5;margin:26px auto 6px;max-width:320px}
+.love-ref{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-deep);padding-left:.35em}
+.love-caption{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(20px,5.4vw,24px);color:var(--ink);margin-top:30px;line-height:1.6;max-width:330px;margin-left:auto;margin-right:auto}
 
 /* Dress code: ilustraciones que flotan */
 .dress-fig{animation:figFloat 6s ease-in-out infinite;transform-origin:50% 100%}
@@ -725,7 +727,7 @@ body{font-size:17px}
 
 /* 4 · Levitar */
 @keyframes levitate{0%,100%{transform:translateY(0) rotate(0deg)}35%{transform:translateY(-9px) rotate(.6deg)}70%{transform:translateY(-4px) rotate(-.6deg)}}
-.loc-float,.familia-card,.damas-card,.hotel-card,.dc-fig{animation:levitate 6.5s ease-in-out infinite}
+.loc-float,.familia-card,.damas-card,.dc-fig{animation:levitate 6.5s ease-in-out infinite}
 .loc-float:nth-child(2),.damas-card,.dc-fig:nth-child(2){animation-delay:-2.2s}
 .hotel-card{animation-delay:-4.1s}
 
@@ -786,7 +788,7 @@ body{font-size:17px}
 @media(prefers-reduced-motion:reduce){.hero-drift,.hero-shine,.ink-bg i,.loc-float,.familia-card,.damas-card,.hotel-card,.dc-fig,.swatch-c.glow,.swatch-c.glow::before,.env-body.landed{animation:none!important}}
 
 
-.rsvp-pases-num{font-family:var(--sans)!important;font-weight:600}
+.rsvp-pases-num{font-variant-numeric:lining-nums}
 /* ════════ v3: flores, rosas premium, regalo ════════ */
 .ink-bg.flor i{mix-blend-mode:multiply;opacity:.92;background-size:cover;background-position:center top}
 .ink-bg.flor{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 120px,#000 calc(100% - 120px),transparent 100%)}
@@ -836,6 +838,82 @@ body{font-size:17px}
 /* música abajo a la derecha, alineada con el menú */
 .vinyl-btn{top:auto!important;bottom:max(1rem,env(safe-area-inset-bottom))!important;right:16px!important;width:52px!important;height:52px!important}
 @media(min-width:1024px){.vinyl-btn{bottom:20px!important;width:64px!important;height:64px!important}}
+.gal-thanks{font-family:var(--display);font-style:italic;font-weight:600;font-size:clamp(22px,6vw,28px);color:var(--ink);margin:22px auto 0;padding:0 28px;max-width:360px;line-height:1.4}
+/* ════════ HOSPEDAJE · lista + mapa ════════ */
+.hosp-intro{font-family:var(--serif);font-style:italic;font-size:19px;font-weight:500;color:var(--ink-soft);max-width:320px;margin:18px auto 0;line-height:1.6}
+.hv-toggle{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;margin:22px auto 6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid rgba(168,132,62,.35);box-shadow:0 8px 22px rgba(42,36,24,.1)}
+.hv-btn{position:relative;z-index:1;min-width:110px;min-height:44px;border:none;background:none;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);transition:color .35s}
+.hv-btn.on{color:#fff}
+.hv-ind{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:linear-gradient(135deg,#6B7A3A,#4F5B2A);box-shadow:0 4px 12px rgba(79,91,42,.35),inset 0 0 0 1px rgba(212,175,55,.6);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.hv-toggle.mapa .hv-ind{transform:translateX(100%)}
+.hv-pane[hidden]{display:none}
+/* lista */
+.hosp-carousel{position:relative;max-width:380px;margin:18px auto 0}
+.hosp-viewport{overflow:hidden}
+.hosp-track{display:flex;transition:transform .45s cubic-bezier(.4,0,.2,1);touch-action:pan-y}
+.hosp-slide{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 30px}
+.hosp-num{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.24em;color:var(--gold-deep);margin-bottom:10px}
+.hosp-photo{width:200px;height:200px;border-radius:50%;overflow:hidden;padding:4px;background:linear-gradient(135deg,#F6E3A1,#E9DDB6 40%,#D4AF37 70%,#F6E3A8);box-shadow:0 14px 34px rgba(42,36,24,.22);margin-bottom:14px;animation:levitate 6.5s ease-in-out infinite}
+.hosp-photo img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;transition:opacity .35s}
+.hosp-thumbs{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.hosp-thumbs button{width:48px;height:48px;border-radius:10px;overflow:hidden;padding:0;border:2px solid transparent;cursor:pointer;opacity:.7;transition:opacity .25s,border-color .25s;background:#eee}
+.hosp-thumbs button.on{opacity:1;border-color:#C9A23A}
+.hosp-thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.hosp-name{font-family:var(--display);font-style:italic;font-weight:600;font-size:24px;color:var(--ink);line-height:1.25;margin-bottom:4px}
+.hosp-type{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#4F5B2A;margin-bottom:8px}
+.hosp-addr{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--ink-soft);line-height:1.5;margin-bottom:4px}
+.hosp-dist{font-family:var(--sans);font-weight:600;font-size:16px;color:var(--gold-deep);margin-bottom:16px}
+.hosp-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-hosp{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 20px;border:1.5px solid #4F5B2A;border-radius:50px;color:#4F5B2A;font-family:var(--sans);font-weight:600;font-size:15px;text-decoration:none;background:#fff;transition:background .25s,color .25s}
+.btn-hosp.gold{background:linear-gradient(135deg,#6B7A3A,#4F5B2A);color:#fff;border-color:rgba(212,175,55,.8)}
+.btn-hosp svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hosp-arrow{position:absolute;top:150px;transform:translateY(-50%);width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.85);border:1px solid rgba(168,132,62,.4);border-radius:50%;cursor:pointer;color:#4F5B2A;z-index:2;padding:0}
+.hosp-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+.hosp-arrow.prev{left:-4px}.hosp-arrow.next{right:-4px}
+.hosp-dots{display:flex;justify-content:center;gap:10px;margin-top:20px}
+.hosp-dots button{width:10px;height:10px;border-radius:50%;border:1px solid #4F5B2A;background:transparent;cursor:pointer;padding:0;transition:background .25s,transform .25s}
+.hosp-dots button.on{background:#4F5B2A;transform:scale(1.25)}
+/* mapa */
+.hmap-frame{position:relative;overflow:hidden;height:580px;max-width:420px;margin:18px auto 0;border-radius:28px;padding:2px;background:linear-gradient(135deg,#F6E3A1,#E9DDB6 35%,#D4AF37 65%,#B8923F);box-shadow:0 22px 50px rgba(42,36,24,.3)}
+.hmap{position:absolute;inset:2px;border-radius:26px;overflow:hidden;background:#2A2418;z-index:0}
+.hmap .leaflet-tile-pane{filter:sepia(.55) hue-rotate(28deg) saturate(1.35) brightness(1.2) contrast(.95)}
+.hmap .leaflet-control-attribution{font-size:9px;background:rgba(42,36,24,.6);color:#E9E6D6}
+.hmap .leaflet-control-attribution a{color:#E8CF7A}
+.hmap-vig{position:absolute;inset:2px;border-radius:26px;pointer-events:none;z-index:500;box-shadow:inset 0 0 60px rgba(24,28,14,.65)}
+.hmap-ctrl{position:absolute;top:14px;right:14px;z-index:600;display:flex;flex-direction:column;gap:8px}
+.hmap-ctrl button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(212,175,55,.7);background:rgba(42,36,24,.85);color:#F6E3A1;font-family:var(--sans);font-size:22px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.hmap-ctrl svg{width:18px;height:18px}
+.hmap-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:600;padding:10px 18px;border-radius:999px;background:rgba(42,36,24,.88);border:1px solid rgba(212,175,55,.6);color:#fff;font-family:var(--sans);font-weight:600;font-size:14px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.hmap-2f{position:absolute;inset:2px;border-radius:26px;z-index:650;display:flex;align-items:center;justify-content:center;background:rgba(24,28,14,.55);color:#fff;font-family:var(--sans);font-weight:600;font-size:17px;opacity:0;pointer-events:none;transition:opacity .3s}
+.hmap-2f.show{opacity:1}
+.hm-hotel{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:18px;color:#2A2418;background:radial-gradient(circle at 35% 30%,#fff,#F5F0E0);box-shadow:0 0 0 3px #D4AF37,0 0 0 5px rgba(168,132,62,.4),0 8px 18px rgba(0,0,0,.45);position:relative}
+.hm-hotel::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(246,227,161,.9);animation:hmPulse 2.2s ease-out infinite}
+@keyframes hmPulse{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.hm-rec{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:#FFFDF7;border:1.5px solid #D4AF37;color:#2A2418;font-family:var(--sans);font-weight:600;font-size:14px;white-space:nowrap;box-shadow:0 8px 18px rgba(0,0,0,.45);position:relative;transform:translate(-50%,-100%)}
+.hm-rec::after{content:'';position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);border:8px solid transparent;border-bottom:0;border-top-color:#D4AF37}
+.hm-rec b{color:#C9A23A;font-weight:600}
+.hm-route{stroke-dasharray:8 10;animation:hmDash 1.6s linear infinite}
+@keyframes hmDash{to{stroke-dashoffset:-36}}
+.hmap-sheet{position:absolute;left:12px;right:12px;bottom:12px;z-index:700;padding:18px 18px 16px;border-radius:22px;background:rgba(44,53,26,.96);border:1px solid rgba(212,175,55,.6);color:#fff;text-align:left;transform:translateY(120%);transition:transform .5s cubic-bezier(.2,.7,.2,1);box-shadow:0 -10px 30px rgba(0,0,0,.35)}
+.hmap-sheet.open{transform:none}
+.hms-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;font-size:16px;cursor:pointer}
+.hms-top{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.hms-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:600;font-size:16px;color:#2A2418;background:#F6E3A1}
+.hms-type{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#E8CF7A}
+.hms-name{font-family:var(--display);font-style:italic;font-weight:600;font-size:22px;line-height:1.25;margin:2px 44px 4px 0}
+.hms-addr{font-family:var(--sans);font-weight:500;font-size:15px;color:#E9E6D6;line-height:1.45}
+.hms-dist{font-family:var(--sans);font-weight:600;font-size:15px;color:#F6E3A1;margin:6px 0 12px}
+.hms-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hms-btns a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.45);color:#fff;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:15px}
+.hms-btns a.gold{background:linear-gradient(135deg,#F6E3A1,#D4AF37);color:#2A2418;border-color:#D4AF37}
+@media(prefers-reduced-motion:reduce){.hosp-photo,.hm-hotel::after,.hm-route{animation:none!important}}
+
+/* sobre nuevo a pantalla completa */
+
+.hosp-name,.hms-name{font-variant-numeric:lining-nums}
+.hosp-resp{font-family:var(--sans);font-weight:600;font-size:15px;color:var(--olive);max-width:330px;margin:12px auto 0;line-height:1.55;padding:12px 16px;border:1px solid rgba(168,132,62,.45);border-radius:14px;background:rgba(255,255,255,.75)}
+.hm-rec.igl{background:#FFFDF7}
+
 /* ============ REDUCED MOTION ============ */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.hero-scroll::after{animation:none}}
 </style>
@@ -912,6 +990,17 @@ body{font-size:17px}
 
 
   <!-- ════════════════ INVITACIÓN ════════════════ -->
+  <!-- ════════════════ LOVE YOU — anillos (efecto pedido por el cliente) ════════════════ -->
+  <section class="love-sec" id="loveyou" aria-label="Love you">
+    <div class="rosa rosa--tl" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div><div class="rosa rosa--br" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
+    <div class="love-line"><span class="love-l">L</span><span class="love-ring"><svg viewBox="0 0 100 100"><defs><linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".7" stop-color="#8C6420"/><stop offset="1" stop-color="#E9C978"/></linearGradient></defs><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="url(#rg1)" stroke-width="12"/><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="40 220" class="ring-glint"/></svg></span><span class="love-l">V</span><span class="love-l">E</span></div>
+    <div class="love-line"><span class="love-l">Y</span><span class="love-ring"><svg viewBox="0 0 100 100"><defs><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".7" stop-color="#8C6420"/><stop offset="1" stop-color="#E9C978"/></linearGradient></defs><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="url(#rg2)" stroke-width="12"/><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="40 220" class="ring-glint"/></svg></span><span class="love-l">U</span></div>
+    <p class="love-caption">Dos anillos, una promesa y toda una vida juntos.</p>
+    <p class="love-verse">«Las muchas aguas no podrán apagar el amor».</p>
+    <p class="love-ref">Cantares 8:7</p>
+  </section>
+
+
   <section class="sec section-bg" id="inicio" style="padding-top:52px;padding-bottom:min(12vh,96px)">
     <div class="ink-bg flor" aria-hidden="true"><i style="background-image:url('flores/rosas.webp')"></i></div>
     <div class="rosa rosa--tl" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div><div class="rosa rosa--br" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
@@ -995,12 +1084,6 @@ body{font-size:17px}
         </div>
       </div>
 
-      <!-- Padrinos -->
-      <h3 style="font-size:clamp(24px,6vw,32px);margin:36px 0 14px">Nuestros <em>Padrinos</em></h3>
-      <div class="damas-card">
-        <!-- PENDIENTE CLIENTE: nombres de padrinos -->
-        <div class="damas-names fam-n">Por confirmar</div>
-      </div>
     </div>
   </section>
 
@@ -1026,7 +1109,7 @@ body{font-size:17px}
         </div></div>
         <div class="loc-float"><div class="loc-card">
           <div class="loc-type">Recepción</div>
-          <div class="loc-icon"><img src="icon-recepcion.webp" alt="" width="374" height="400"></div>
+          <div class="loc-icon"><img src="icon-comida.webp" alt="" width="400" height="400"></div>
           <div class="loc-church">Salón de recepción</div>
           <div class="loc-sched-time" style="margin:10px 0 6px">2:00 p.m.</div>
           <p class="loc-addr">3065 Waughtown St.<br>Winston-Salem, NC 27107</p>
@@ -1044,13 +1127,47 @@ body{font-size:17px}
     <div class="sec-inner">
       <div class="eyebrow rv">Para tu Comodidad</div>
       <h2 class="rv">Hospedaje <em>Recomendado</em></h2>
-      <div class="hotel-grid">
-        <div class="hotel-card hotel-slide" style="padding:28px 22px">
-          <!-- PENDIENTE CLIENTE: hoteles recomendados -->
-          <div class="hotel-name">Por confirmar</div>
-          <p style="font-family:var(--sans);font-size:16px;color:var(--ink-soft);line-height:1.6">Pronto compartiremos opciones de hospedaje cerca de Winston-Salem.</p>
+      <p class="hosp-intro">Te compartimos opciones en Winston-Salem, cerca de la recepción, y en Conover, cerca de la iglesia en Claremont.</p>
+      <p class="hosp-resp">Cada invitado se hace responsable de los gastos de su hospedaje.</p>
+
+    <div class="hv-toggle" role="tablist" aria-label="Ver hospedaje como">
+      <span class="hv-ind" aria-hidden="true"></span>
+      <button class="hv-btn on" type="button" role="tab" aria-selected="true" data-view="lista">Lista</button>
+      <button class="hv-btn" type="button" role="tab" aria-selected="false" data-view="mapa">Mapa</button>
+    </div>
+
+    <div class="hv-pane" id="hvLista">
+      <div class="hosp-carousel">
+        <button class="hosp-arrow prev" type="button" aria-label="Hotel anterior"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="hosp-arrow next" type="button" aria-label="Hotel siguiente"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="hosp-viewport"><div class="hosp-track" id="hospTrack"></div></div>
+        <div class="hosp-dots" id="hospDots"></div>
+      </div>
+    </div>
+
+    <div class="hv-pane" id="hvMapa" hidden>
+      <div class="hmap-frame">
+        <div class="hmap" id="hmap" aria-label="Mapa de hoteles, iglesia y recepción"></div>
+        <div class="hmap-vig" aria-hidden="true"></div>
+        <div class="hmap-ctrl">
+          <button type="button" id="hmZin" aria-label="Acercar">+</button>
+          <button type="button" id="hmZout" aria-label="Alejar">−</button>
+          <button type="button" id="hmAll" aria-label="Ver todo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </div>
+        <div class="hmap-hint" id="hmHint">Toca un número para ver el hotel</div>
+        <div class="hmap-2f" id="hm2f">Usa dos dedos para mover el mapa</div>
+        <div class="hmap-sheet" id="hmSheet" aria-live="polite">
+          <button class="hms-x" type="button" id="hmsX" aria-label="Cerrar ficha">✕</button>
+          <div class="hms-top"><span class="hms-num" id="hmsNum">1</span><span class="hms-type" id="hmsType"></span></div>
+          <p class="hms-name" id="hmsName"></p>
+          <p class="hms-addr" id="hmsAddr"></p>
+          <p class="hms-dist" id="hmsDist"></p>
+          <div class="hms-btns"><a id="hmsMap" target="_blank" rel="noopener">Ver ubicación</a><a id="hmsBook" class="gold" target="_blank" rel="noopener">Reservar</a></div>
         </div>
       </div>
+    </div>
+  
+
     </div>
   </section>
 
@@ -1077,7 +1194,7 @@ body{font-size:17px}
         </div>
 
         <div class="itin-item">
-          <div class="itin-icon-wrap"><img src="icon-recepcion.webp" alt="" width="374" height="400"></div>
+          <div class="itin-icon-wrap"><img src="icon-comida.webp" alt="" width="400" height="400"></div>
           <div class="itin-text itin-text--right">
             <span class="itin-time">2:00 p.m.</span>
             <div class="itin-ev">Recepción</div>
@@ -1124,15 +1241,6 @@ body{font-size:17px}
   </section>
 
 
-  <!-- ════════════════ LOVE YOU — anillos (efecto pedido por el cliente) ════════════════ -->
-  <section class="love-sec" id="loveyou" aria-label="Love you">
-    <div class="rosa rosa--tl" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div><div class="rosa rosa--br" aria-hidden="true"><img src="rosas-blancas.webp" alt="" width="170" height="163"></div>
-    <div class="love-line"><span class="love-l">L</span><span class="love-ring"><svg viewBox="0 0 100 100"><defs><linearGradient id="rg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".7" stop-color="#8C6420"/><stop offset="1" stop-color="#E9C978"/></linearGradient></defs><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="url(#rg1)" stroke-width="12"/><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="40 220" class="ring-glint"/></svg></span><span class="love-l">V</span><span class="love-l">E</span></div>
-    <div class="love-line"><span class="love-l">Y</span><span class="love-ring"><svg viewBox="0 0 100 100"><defs><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A8"/><stop offset=".45" stop-color="#C99A3E"/><stop offset=".7" stop-color="#8C6420"/><stop offset="1" stop-color="#E9C978"/></linearGradient></defs><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="url(#rg2)" stroke-width="12"/><ellipse cx="50" cy="50" rx="40" ry="40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="40 220" class="ring-glint"/></svg></span><span class="love-l">U</span></div>
-    <p class="love-caption">Dos anillos, una promesa y toda una vida juntos.</p>
-  </section>
-
-
   <!-- ════════════════ GALERÍA — RUEDA 3D ════════════════ -->
   <section class="gallery" id="galeria">
     <div class="gallery-head rv">
@@ -1151,6 +1259,7 @@ body{font-size:17px}
       </div>
     </div>
     <p class="gal-hint rv">arrastra para girar</p>
+    <p class="gal-thanks rv">Gracias por ser parte de nuestra historia</p>
   </section>
 
 
@@ -1847,12 +1956,13 @@ gsap.fromTo('.footer-date',{opacity:0,letterSpacing:'1em'},{opacity:1,letterSpac
   gsap.fromTo('.love-l',{opacity:0,y:RM?0:30},{opacity:1,y:0,duration:.8,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
   gsap.fromTo(rings,{opacity:0,y:RM?0:-120,rotateY:RM?0:540,scale:RM?1:1.6},{opacity:1,y:0,rotateY:0,scale:1,duration:1.4,stagger:.35,ease:'bounce.out',delay:.4,scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
   if(!RM){gsap.to('.ring-glint',{strokeDashoffset:-260,duration:3.2,repeat:-1,ease:'none'});}
+  gsap.fromTo('.love-verse,.love-ref',{opacity:0,y:12},{opacity:1,y:0,duration:1,stagger:.2,delay:1.9,scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
   gsap.fromTo('.love-caption',{opacity:0,y:14},{opacity:1,y:0,duration:1,delay:1.4,scrollTrigger:{trigger:'.love-sec',start:'top 75%'}});
 })();
 
 // ── MENÚ FLOTANTE ──
 (function(){
-  var SECS=[['inicio','Inicio'],['familia','Familia'],['lugares','Lugares'],['itinerario','Itinerario'],['vestimenta','Vestimenta'],['galeria','Galería'],['regalos','Regalos'],['rsvp','Confirmar']];
+  var SECS=[['inicio','Inicio'],['familia','Familia'],['lugares','Lugares'],['hospedaje','Hospedaje'],['itinerario','Itinerario'],['vestimenta','Vestimenta'],['galeria','Galería'],['regalos','Regalos'],['rsvp','Confirmar']];
   SECS=SECS.filter(function(x){return document.getElementById(x[0])});
   var pill=document.getElementById('navpill'),links=document.getElementById('nav-links'),ind=document.getElementById('nav-ind');
   var menu=document.getElementById('navmenu'),list=document.getElementById('nm-list'),openB=document.getElementById('nav-open'),closeB=document.getElementById('nm-close');
@@ -1909,6 +2019,106 @@ function initSectionFades(){
   }
 }
 initSectionFades();
+
+/* ════════ HOSPEDAJE · lista + mapa ════════ */
+(function(){
+  var HOTELS=[{"n": "Best Western Plus Hanes Mall Hotel", "t": "Winston-Salem · cerca de la recepción", "a": "3330 Silas Creek Pkwy, Winston-Salem, NC 27103", "lat": 36.0742475, "lng": -80.2991308, "b": "https://www.bestwestern.com/en_US/book/hotels-in-winston-salem/best-western-plus-hanes-mall-hotel/propertyCode.34179.html", "f": ["hotel-1-a.webp", "hotel-1-b.webp", "hotel-1-c.webp"], "d": "8.2 mi · aprox. 12 min a la recepción", "dest": "recepcion", "m": "https://www.google.com/maps/search/?api=1&query=Best+Western+Plus+Hanes+Mall+Hotel+3330+Silas+Creek+Pkwy+Winston-Salem+NC+27103", "route": [[36.07427, -80.29908], [36.07389, -80.29877], [36.07352, -80.29842], [36.07312, -80.29789], [36.07278, -80.29731], [36.07249, -80.29674], [36.071, -80.29708], [36.07009, -80.29724], [36.06981, -80.29725], [36.06902, -80.29743], [36.06846, -80.29757], [36.06799, -80.29782], [36.06761, -80.29806], [36.06704, -80.29848], [36.0655, -80.29968], [36.06362, -80.30056], [36.06352, -80.29962], [36.06374, -80.29838], [36.06388, -80.29747], [36.06388, -80.29607], [36.06354, -80.29242], [36.06334, -80.29073], [36.06222, -80.28335], [36.06151, -80.27818], [36.06141, -80.27601], [36.06154, -80.27362], [36.06176, -80.27197], [36.06202, -80.27069], [36.0622, -80.26997], [36.0625, -80.26898], [36.06334, -80.2666], [36.06366, -80.26567], [36.06387, -80.26502], [36.06445, -80.26301], [36.06506, -80.26044], [36.06532, -80.2587], [36.06548, -80.25681], [36.06546, -80.25491], [36.06513, -80.25211], [36.06484, -80.25018], [36.06464, -80.24833], [36.06469, -80.24729], [36.06491, -80.24596], [36.06508, -80.24533], [36.06568, -80.24332], [36.06582, -80.24284], [36.06605, -80.24158], [36.06608, -80.24022], [36.06603, -80.23977], [36.06564, -80.23817], [36.06529, -80.23737], [36.06468, -80.23613], [36.0643, -80.2354], [36.06322, -80.23322], [36.06288, -80.23232], [36.06264, -80.23149], [36.06252, -80.23095], [36.06206, -80.22801], [36.06143, -80.22395], [36.06106, -80.22281], [36.06044, -80.2217], [36.05958, -80.22047], [36.06114, -80.21815], [36.06308, -80.21556], [36.06378, -80.21468], [36.06448, -80.21376], [36.06558, -80.21261], [36.06588, -80.21231], [36.06725, -80.21101], [36.06746, -80.21086], [36.06772, -80.21075], [36.06813, -80.21072], [36.0686, -80.21072], [36.06856, -80.21], [36.0686, -80.20883], [36.06861, -80.20835], [36.06867, -80.20731], [36.06869, -80.207], [36.06871, -80.20636], [36.06874, -80.20563], [36.06882, -80.20459], [36.0691, -80.20355], [36.07044, -80.19954], [36.07086, -80.19865], [36.07154, -80.19758], [36.07266, -80.19585], [36.0736, -80.19433], [36.07398, -80.19347], [36.07409, -80.19323], [36.07428, -80.1928], [36.07444, -80.19237], [36.0746, -80.19183], [36.07495, -80.19008], [36.07549, -80.18754], [36.07591, -80.18561], [36.07608, -80.18483], [36.07633, -80.18374], [36.07645, -80.1832], [36.07655, -80.18269], [36.07677, -80.18103], [36.07682, -80.18058], [36.07685, -80.18035], [36.07687, -80.18014], [36.07694, -80.18014]]}, {"n": "Comfort Inn Conover-Hickory", "t": "Conover · cerca de la iglesia", "a": "1607 Fairgrove Church Rd SE, Conover, NC 28613", "lat": 35.7004885, "lng": -81.2611307, "b": "https://www.booking.com/hotel/us/hickory-inn.html", "f": ["hotel-2-a.webp", "hotel-2-b.webp", "hotel-2-c.webp"], "d": "10.8 mi · aprox. 17 min a la iglesia", "dest": "iglesia", "m": "https://www.google.com/maps/search/?api=1&query=Comfort+Inn+Conover-Hickory+1607+Fairgrove+Church+Rd+Conover+NC+28613", "route": [[35.70069, -81.2613], [35.70042, -81.26178], [35.70071, -81.26187], [35.70144, -81.26194], [35.70211, -81.26181], [35.70269, -81.25777], [35.7029, -81.25647], [35.70308, -81.25572], [35.7034, -81.25458], [35.70406, -81.25283], [35.70584, -81.24849], [35.70762, -81.24417], [35.71032, -81.23762], [35.71419, -81.22823], [35.7143, -81.22759], [35.71426, -81.22734], [35.71414, -81.22713], [35.71397, -81.22697], [35.71372, -81.22691], [35.71348, -81.22698], [35.71303, -81.22734], [35.71229, -81.22668], [35.71167, -81.22578], [35.71084, -81.22455], [35.70918, -81.22264], [35.7084, -81.2217], [35.70787, -81.22082], [35.70743, -81.22015], [35.70723, -81.21983], [35.70694, -81.21937], [35.70651, -81.21864], [35.70635, -81.21838], [35.70592, -81.21768], [35.70549, -81.2169], [35.70514, -81.21623], [35.7047, -81.21526], [35.70415, -81.21386], [35.70374, -81.21278], [35.70345, -81.21197], [35.70318, -81.21113], [35.70303, -81.21088], [35.70282, -81.21026], [35.70278, -81.2099], [35.70284, -81.20833], [35.70286, -81.2078], [35.70282, -81.20567], [35.7028, -81.20395], [35.70278, -81.20238], [35.70276, -81.20125], [35.70133, -81.2], [35.69925, -81.20013], [35.69767, -81.20046], [35.69618, -81.20078], [35.69246, -81.20157], [35.69138, -81.20176], [35.69023, -81.20157], [35.68964, -81.20114], [35.68781, -81.19903], [35.68598, -81.19688], [35.68459, -81.19571], [35.68325, -81.19511], [35.67779, -81.19383], [35.67268, -81.19288], [35.67036, -81.19301], [35.67004, -81.19242], [35.66955, -81.19167], [35.66933, -81.19142], [35.66856, -81.19068], [35.66819, -81.19039], [35.66769, -81.1901], [35.66655, -81.18961], [35.66527, -81.18908], [35.66496, -81.18879], [35.66427, -81.18749], [35.66408, -81.18692], [35.6638, -81.18595], [35.66459, -81.18297], [35.66548, -81.17967], [35.66599, -81.1778], [35.6664, -81.17628], [35.66675, -81.17498], [35.66755, -81.17212], [35.66774, -81.17162], [35.66812, -81.17079], [35.66874, -81.16961], [35.669, -81.16905], [35.66921, -81.16841], [35.66937, -81.1675], [35.66957, -81.16575], [35.66978, -81.16395], [35.6699, -81.16327], [35.67061, -81.16064], [35.67089, -81.1596], [35.67136, -81.15786], [35.67168, -81.15666], [35.6724, -81.15399], [35.67313, -81.15126], [35.67356, -81.14967], [35.67438, -81.14662], [35.67516, -81.14373], [35.67549, -81.14249], [35.6766, -81.13839], [35.67699, -81.13693], [35.67715, -81.13617], [35.67716, -81.13564], [35.67714, -81.13535], [35.67701, -81.13462], [35.67687, -81.13396], [35.67629, -81.13135], [35.67619, -81.13072], [35.67617, -81.13022], [35.67619, -81.12983], [35.67633, -81.12904], [35.67654, -81.12842], [35.67704, -81.12707], [35.67722, -81.12647], [35.6773, -81.12591], [35.67729, -81.12485]]}, {"n": "Holiday Inn Express & Suites Conover", "t": "Conover · cerca de la iglesia", "a": "104 10th St NW, Conover, NC 28613", "lat": 35.7216438, "lng": -81.2164581, "b": "https://www.ihg.com/holidayinnexpress/hotels/us/en/conover/cnovr/hoteldetail", "f": ["hotel-3-a.webp", "hotel-3-b.webp", "hotel-3-c.webp"], "d": "9.0 mi · aprox. 14 min a la iglesia", "dest": "iglesia", "m": "https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Express+Suites+Conover+104+10th+St+NW+Conover+NC+28613", "route": [[35.72144, -81.21639], [35.72119, -81.21611], [35.72115, -81.21558], [35.72149, -81.21498], [35.72201, -81.21451], [35.72264, -81.21374], [35.72295, -81.2132], [35.72327, -81.21261], [35.72358, -81.21202], [35.72493, -81.2095], [35.72603, -81.20745], [35.72348, -81.20535], [35.72189, -81.20399], [35.71961, -81.20217], [35.71821, -81.20149], [35.71591, -81.20108], [35.71133, -81.20077], [35.70811, -81.20057], [35.70377, -81.20018], [35.70275, -81.20008], [35.70012, -81.19994], [35.69767, -81.20046], [35.69561, -81.20088], [35.69167, -81.20172], [35.69023, -81.20157], [35.68919, -81.20071], [35.6866, -81.1976], [35.68459, -81.19571], [35.68095, -81.19457], [35.67353, -81.1929], [35.67036, -81.19301], [35.66985, -81.1921], [35.6695, -81.19162], [35.66856, -81.19068], [35.66801, -81.19028], [35.66718, -81.18987], [35.66527, -81.18908], [35.66485, -81.18862], [35.66416, -81.18721], [35.6638, -81.18595], [35.66463, -81.18285], [35.66566, -81.179], [35.6664, -81.17628], [35.66732, -81.17289], [35.66773, -81.17164], [35.66812, -81.17079], [35.66885, -81.16939], [35.66913, -81.16867], [35.66937, -81.1675], [35.66962, -81.16535], [35.66989, -81.16331], [35.67061, -81.16064], [35.67097, -81.15931], [35.67156, -81.15709], [35.6724, -81.15399], [35.67314, -81.15123], [35.67413, -81.14754], [35.67516, -81.14373], [35.67567, -81.14184], [35.67681, -81.1376], [35.67715, -81.13617], [35.67716, -81.13562], [35.67708, -81.13492], [35.67687, -81.13396], [35.67624, -81.13108], [35.67617, -81.13038], [35.67619, -81.12983], [35.67637, -81.12891], [35.67673, -81.12791], [35.67722, -81.12647], [35.6773, -81.1256]]}];
+  var VEN={"iglesia": {"lat": 35.677348, "lng": -81.12485, "label": "Iglesia", "maps": "https://www.google.com/maps/search/?api=1&query=3896+E+NC-10%2C+Claremont%2C+NC+28610"}, "recepcion": {"lat": 36.0769439, "lng": -80.1800664, "label": "Recepción", "maps": "https://www.google.com/maps/search/?api=1&query=3065+Waughtown+St%2C+Winston-Salem%2C+NC+27107"}};
+  var REC=VEN.recepcion;
+  var RMh=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function init(){
+    var track=document.getElementById('hospTrack');if(!track)return;
+    var ico={book:'<svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M7 7V5a5 5 0 0110 0v2"/></svg>',pin:'<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'};
+    HOTELS.forEach(function(h,i){
+      var s=document.createElement('div');s.className='hosp-slide';
+      s.innerHTML='<span class="hosp-num">'+String(i+1).padStart(2,'0')+'</span>'+
+        '<div class="hosp-photo"><img src="'+h.f[0]+'" alt="'+h.n+'"></div>'+
+        '<div class="hosp-thumbs">'+h.f.map(function(u,k){return '<button type="button" class="'+(k?'':'on')+'" aria-label="Foto '+(k+1)+'"><img src="'+u+'" alt=""></button>';}).join('')+'</div>'+
+        '<div class="hosp-name">'+h.n+'</div><div class="hosp-type">'+h.t+'</div>'+
+        '<div class="hosp-addr">'+h.a+'</div><div class="hosp-dist">'+h.d+'</div>'+
+        '<div class="hosp-btns"><a class="btn-hosp gold" href="'+h.b+'" target="_blank" rel="noopener">'+ico.book+'Reservar</a><a class="btn-hosp" href="'+h.m+'" target="_blank" rel="noopener">'+ico.pin+'Cómo llegar</a></div>';
+      var main=s.querySelector('.hosp-photo img');
+      s.querySelectorAll('.hosp-thumbs button').forEach(function(b,k){b.addEventListener('click',function(){
+        s.querySelectorAll('.hosp-thumbs button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');
+        main.style.opacity=0;setTimeout(function(){main.src=h.f[k];main.style.opacity=1;},200);
+      });});
+      track.appendChild(s);
+    });
+    var dots=document.getElementById('hospDots'),idx=0,n=HOTELS.length;
+    for(var i=0;i<n;i++){(function(k){var d=document.createElement('button');d.type='button';d.setAttribute('aria-label','Hotel '+(k+1));d.addEventListener('click',function(){go(k);});dots.appendChild(d);})(i);}
+    function go(i){idx=(i+n)%n;track.style.transform='translateX('+(-idx*100)+'%)';[].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===idx);});}
+    document.querySelector('.hosp-arrow.prev').addEventListener('click',function(){go(idx-1);});
+    document.querySelector('.hosp-arrow.next').addEventListener('click',function(){go(idx+1);});
+    var sx=0,sy=0;
+    track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    track.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy))go(dx<0?idx+1:idx-1);},{passive:true});
+    go(0);
+
+    /* selector Lista / Mapa */
+    var tg=document.querySelector('.hv-toggle'),lista=document.getElementById('hvLista'),mapa=document.getElementById('hvMapa'),built=false;
+    tg.querySelectorAll('.hv-btn').forEach(function(b){b.addEventListener('click',function(){
+      var v=b.dataset.view;tg.classList.toggle('mapa',v==='mapa');
+      tg.querySelectorAll('.hv-btn').forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on);});
+      lista.hidden=v!=='lista';mapa.hidden=v!=='mapa';
+      if(v==='mapa'){if(!built){built=true;buildMap();}else if(window._hm){_hm.invalidateSize();}}
+      if(window.ScrollTrigger)setTimeout(function(){ScrollTrigger.refresh();},50);
+    });});
+  }
+
+  function loadLeaflet(cb){
+    if(window.L)return cb();
+    var c=document.createElement('link');c.rel='stylesheet';c.href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css';document.head.appendChild(c);
+    var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';s.onload=cb;document.head.appendChild(s);
+  }
+  function buildMap(){loadLeaflet(function(){
+    var touch=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+    var map=L.map('hmap',{zoomControl:false,attributionControl:true,dragging:!touch,tap:false,scrollWheelZoom:false,touchZoom:true});
+    window._hm=map;
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',{maxZoom:16,attribution:'Tiles &copy; Esri'}).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
+    var pts=[[REC.lat,REC.lng],[VEN.iglesia.lat,VEN.iglesia.lng]];
+    HOTELS.forEach(function(h){
+      L.polyline(h.route,{color:'#E8CF7A',weight:3,opacity:.9,className:'hm-route'}).addTo(map);
+    });
+    L.marker([REC.lat,REC.lng],{icon:L.divIcon({className:'',html:'<div class="hm-rec"><b>♥</b> Recepción</div>',iconSize:[0,0]}),keyboard:false,zIndexOffset:-1000}).addTo(map);
+    L.marker([VEN.iglesia.lat,VEN.iglesia.lng],{icon:L.divIcon({className:'',html:'<div class="hm-rec igl"><b>✦</b> Iglesia</div>',iconSize:[0,0]}),keyboard:false,zIndexOffset:-1000}).addTo(map);
+    HOTELS.forEach(function(h,i){
+      pts.push([h.lat,h.lng]);
+      var m=L.marker([h.lat,h.lng],{icon:L.divIcon({className:'',html:'<div class="hm-hotel">'+(i+1)+'</div>',iconSize:[40,40],iconAnchor:[20,20]}),title:h.n}).addTo(map);
+      m.on('click',function(){openSheet(h,i);map.flyTo([h.lat-.004,h.lng],15,{duration:RMh?0:.9});});
+    });
+    var bounds=L.latLngBounds(pts);
+    function all(){map.fitBounds(bounds,{paddingTopLeft:[40,90],paddingBottomRight:[40,90]});}
+    map.invalidateSize();all();
+    document.getElementById('hmZin').onclick=function(){map.zoomIn();};
+    document.getElementById('hmZout').onclick=function(){map.zoomOut();};
+    document.getElementById('hmAll').onclick=function(){closeSheet();all();};
+    var sheet=document.getElementById('hmSheet'),hint=document.getElementById('hmHint');
+    function openSheet(h,i){
+      document.getElementById('hmsNum').textContent=i+1;document.getElementById('hmsType').textContent=h.t;
+      document.getElementById('hmsName').textContent=h.n;document.getElementById('hmsAddr').textContent=h.a;
+      document.getElementById('hmsDist').textContent=h.d;
+      document.getElementById('hmsMap').href=h.m;document.getElementById('hmsBook').href=h.b;
+      sheet.classList.add('open');hint.style.opacity=0;
+    }
+    function closeSheet(){sheet.classList.remove('open');hint.style.opacity=1;}
+    document.getElementById('hmsX').onclick=closeSheet;
+    /* móvil: un dedo hace scroll de la página, dos dedos mueven el mapa */
+    if(touch){
+      var el=document.getElementById('hmap'),tip=document.getElementById('hm2f'),tt=null;
+      el.addEventListener('touchstart',function(e){
+        if(e.touches.length>1){map.dragging.enable();tip.classList.remove('show');}
+        else{map.dragging.disable();}
+      },{passive:true});
+      el.addEventListener('touchmove',function(e){
+        if(e.touches.length===1){tip.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){tip.classList.remove('show');},1200);}
+      },{passive:true});
+      el.addEventListener('touchend',function(e){if(e.touches.length<2)map.dragging.disable();},{passive:true});
+    }
+  });}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
 
 // ── SCROLL LIMIT ──
 (function(){
